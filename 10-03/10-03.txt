@@ -1,0 +1,63 @@
+entity framework
+html-css-js
+mvc core
+restful
+onion - proje
+--------------
+clr
+stack heap static
+---------------
+foreach
+collection
+Ienumarable
+iteration variable - set edilemez
+metot imza -> parametre sayısı, parametre tipleri  
+stack veri boyutları belli
+heap - farklı veri boyutları
+struct  
+--------------------------------------------------------
+class'lar diskte tutulur.
+object'l  er ram de tutulur  
+register
+herşey objeden türer
+
+-----------------------------------------------------------
+notasyon
+verilen isim yapılan iş ile alakalı olmalıdır.
+yorum satırı
+---------------
+il dasm
+--------------
+veri tutarlılığını maksimum hale getirmek için encapsulation kullanılır
+
+-----------
+
+Orphan records
+
+
+veri tutalılığı
+minimum tekrar
+
+---------------
+
+delegate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

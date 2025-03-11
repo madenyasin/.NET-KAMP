@@ -1,0 +1,5 @@
+
+datediff
+convert
+getdate
+-- brezilyada yaşayan müşterilerimden en yüksek siparişin tutarı nedir?

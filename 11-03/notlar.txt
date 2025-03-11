@@ -1,0 +1,55 @@
+deconstructor, Idisposable, dispose
+
+ctor
+*** bir sınıf ram'de oluşturulurken ilk çalışan metodtur.
+
+ctor-yazma
+1-Sınıf ile aynı isimde olmalı.
+2-return type yazılmaz.
+
+***	İmzası farklı olmak kaydıyla istenilen kadar ctor yazılabilir.
+***	Default ctor: parametresi olmayan constructor'lara denir.
+****	Eğer biz parametrik ctor yazarsak; default ctor oluşturulmaz. Yazmaz isek compiler her sınıf için 
+		otomatik olarak ctor oluşturur
+		
+Neden ctor yazarız?
+
+1- Nesne ilk oluşturulurken ilk değer ataması yapmak için kullanılır. (object initiliazer daha yaygın kullanılır.)
+2- Sınıf oluşturulurken ilk yapılmasını istediğimiz işler için kullanılır.
+3- Kullanıcıları belirli parametreleri girmeye zorlamak için kullanılır.
+
+primary ctor...
+
+*** Bir sınıfın kendi constructor'ları arasında veri transferi yapmak için "this" kullanılır.
+*** Kalıtım ile constructor'lar arasında veri tane yapmak için "base" kullanılır.
+
+--------------------------------------------------------------------
+diamond problem
+multi inheritance
+
+c# programlama dilinde bir class'ın aynı seviyede en fazla 1 adet ata sınıfı olabilir.   
+
+------------------------------------
+Destructure
+*** Bir sınıfta bir tane dector olabilir.
+*** Kullanırken dikkatli olmak gerekir. (Mermory leak olabilir.)
+
+**** IDisposable kullanılması tavsiye edilir.
+--------------------------------------------------------------------
+
+				|	New()	|	:	|
+				
+Class			|	+		|	+	|
+Abstract Class	|	-		|	+	|
+Sealed Class	|	+		|	-	|
+Static Class	|	-		|	-	|
+--------------------------------------------------------------------
+stack, heap, static
+bir class static ise members'ları da static olmalıdır.
+utility amacıyla kullanılan sınıfları static yaparız
+
+
+const ve readonly
+
+polymorfism
+collections
