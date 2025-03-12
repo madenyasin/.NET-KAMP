@@ -54,3 +54,7 @@ foreach (var item in depo.EsyaListesiGetir())
 {
     Console.WriteLine(item);
 }
+
+Console.WriteLine(depo.ToplamFiyat());
+//----------------------------------------------------------------
+

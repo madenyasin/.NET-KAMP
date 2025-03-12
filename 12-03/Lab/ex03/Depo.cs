@@ -15,9 +15,24 @@ namespace ex03
             elektronikEsyalar.Add(esya);
         }
 
-        public List<ElektronikEsya> EsyaListesiGetir()
+        public List<string> EsyaListesiGetir()
         {
-            return elektronikEsyalar;
+            List<string> esyaListesi = new List<string>();
+            foreach (var item in elektronikEsyalar)
+            {
+                esyaListesi.Add(item.ToString());
+            }
+            return esyaListesi;
+        }
+
+        public double ToplamFiyat()
+        {
+            double toplamFiyat = 0;
+            foreach (var item in elektronikEsyalar)
+            {
+                toplamFiyat += item.Fiyat;
+            }
+            return toplamFiyat;
         }
     }
 }
