@@ -1,0 +1,16 @@
+1-n
+çok olan tarafta tek olanın id'si tutulur.
+--------------------------------------------------
+n-n
+ilişkide araa tablo yapılmak zorundadır.
+-----------------------------------------------------
+iki froegin key'in kombinlenmiş hali compozite keydir
+
+
+
+
+kurs - id, ad, kontenjan
+
+n-n
+
+öğrenci - id, ad, soyad

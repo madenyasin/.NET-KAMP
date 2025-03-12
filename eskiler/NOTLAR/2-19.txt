@@ -1,0 +1,55 @@
+codefirst 
+linq
+
+mvc
+
+dms, ddl, normalizasyon, conmstraint
+
+oop
+
+razor
+restful api
+di
+
+
+
+
+return	void
+
+expression vs statement
+
+namespace
+
+property
+metod
+field
+
+değer	
+referans
+
+structs
+enumerations
+
+nullable
+
+explicit
+implicit
+
+
+int.parse()
+
+
+virtual	
+objeden türemek
+
+dynamic???
+
+
+
+
+
+
+
+
+HATALAR
+formatexcaption

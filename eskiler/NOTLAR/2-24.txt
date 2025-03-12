@@ -1,0 +1,5 @@
+türkçe karakteri -> ingilziceye çeviren metod
+tc kimlik kontrolü
+
+ref
+out

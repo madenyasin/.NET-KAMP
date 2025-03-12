@@ -1,0 +1,17 @@
+microsoft azure - task
+
+
+iCollection
+iEnumarable
+iList
+
+arasındaki farklar
+
+katmanlı mimari
+mvc web
+entity framework
+solid prensipleri
+-----------------------------------
+class - nesne - property
+
+virtual - override

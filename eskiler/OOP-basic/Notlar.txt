@@ -1,0 +1,16 @@
+﻿OOP
+
+1- Encapsulation (izole etmek - kapsüllemek)
+2- Inheritance (Kalıtım, türetme, miras)   ,
+3-Polymorfism (çok biçimlilik, çok şekillilik)
+-> kalıtımda aynı isimli metodlaın farkşı şekilde çalışmasıdır.
+4- Data Abstraction (verinin soyutlanması)
+
+Access Modifiers
+*** Class seviyesinde varsayılan erişim belirleyicisi rpivate'dır.
+*** 
+
+
+
+
+classic propery, auto property, semmi auto property
