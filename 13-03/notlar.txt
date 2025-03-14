@@ -1,0 +1,9 @@
+Interface
+
+hiyearşik yapıyı esnetmek için kullanılır
+
+interface segregation
+
+yield return
+
+stack, queue, generic

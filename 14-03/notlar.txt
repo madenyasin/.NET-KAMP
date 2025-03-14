@@ -1,9 +1,31 @@
-Interface
+16 byte'dan daha büyük veri tiplerini class olarak tanımlamak gerekir.
 
-hiyearşik yapıyı esnetmek için kullanılır
+value type'lar aslında birer struct yapısıdır. 
 
-interface segregation
+struct yapısı da ram'in stack bölgesinde tutulur.
 
-yield return
 
-stack, queue, generic
+Generics
+1- tip güvenliği
+2- boxing ve unboxing mekanizması olmadığı için performanslı
+
+generic constraints
+
+class
+struct
+inheritance
+interface
+new() --- bir generic yapıda birden fazla kısıt varsa; new kısıtı en sonda olmalıdır.
+
+
+NULLABLE TYPES
+
+value type değişkenler null değer alamaz.
+
+Enum
+
+numeric değerler ile string değerleri eşleştirmek için kullanılır.
+değişmeyen, sabit değerler kullanılmalıdır.
+
+
+
