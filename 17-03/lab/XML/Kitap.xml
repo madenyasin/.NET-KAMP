@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Kitaplar>
+	<Kitap ID ="123">
+		<KitapAdi>Yüzüklerin Efendisi</KitapAdi>
+		<Yazar>J.R.R. Tolkien</Yazar>
+		<YayinEvi>İthaki Yayınları</YayinEvi>
+		<YayinTarihi>2001</YayinTarihi>
+		<SayfaSayisi>1216</SayfaSayisi>
+		<Fiyat>50</Fiyat>
+		<Resim>YuzuklerinEfendisi.jpg</Resim>
+	</Kitap>
+	<Kitap ID="124">
+		<KitapAdi>Harry Potter ve Felsefe Taşı</KitapAdi>
+		<Yazar>J.K. Rowling</Yazar>
+		<YayinEvi>Yapı Kredi Yayınları</YayinEvi>
+		<YayinTarihi>1999</YayinTarihi>
+		<SayfaSayisi>336</SayfaSayisi>
+		<Fiyat>20</Fiyat>
+		<Resim>HarryPotter.jpg</Resim>
+	</Kitap>
+</Kitaplar>

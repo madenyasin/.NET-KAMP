@@ -1,0 +1,27 @@
+[
+  {
+    "ID ": "123",
+    "Ad": "Denemeler",
+    "Yazar": "Montaigne",
+    "Fiyat": 234
+  },
+  {
+    "ID ": "126",
+    "Ad": "Suç ve Ceza",
+    "Yazar": "Dostoyevski",
+    "Fiyat": 300
+  },
+  {
+    "ID ": "129",
+    "Ad": "Cehennem",
+    "Yazar": "Dan Brown",
+    "Fiyat": 150
+  },
+  {
+    "ID ": "132",
+    "Ad": "Empati",
+    "Yazar": "Adam Fawer",
+    "Fiyat": 100
+  }
+
+]

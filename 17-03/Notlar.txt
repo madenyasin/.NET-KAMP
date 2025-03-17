@@ -1,0 +1,28 @@
+DOSYALAR
+
+text ve binary dosyalar olmak üzere ikiye ayrılır.
+
+text -> yalnızca data
+binary -> header, data
+XML -> hiyerarşik bir yapıya sahiptir.
+JSON -> {} - nesne
+		[] - liste
+		:  - property
+
+RAM		> DİSK
+object -> string = serialization
+
+DİSK	> RAM
+string -> object = deserialization
+
+-----------------------------------------------------------------------
+
+DELEGATE
+
+metot taşımak için kullanılır
+delegeler return type'ı ve imzası uyan metotları taşıyabilir.
+
+action -> geriye değer döndürmeyen metotları taşır
+func-> geriye değer döndüren metotları taşır
+
+multicast delegates
