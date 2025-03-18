@@ -1,0 +1,13 @@
+orphan records
+
+EF CORE
+
+Data != Object
+
+model first, database first, code first
+ 
+veri tutmak iiçin kullandığımız sınıflara model ya da entity deriz
+
+navigation property
+linq
+extension methods
