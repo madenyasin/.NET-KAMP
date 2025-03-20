@@ -1,0 +1,12 @@
+navigation property nullable olmalıdır.
+
+
+migration
+versiyonlama sistemi  
+
+
+Add-Migraition InitDB
+update-database
+update-database Migrationİsmi -> o konuma geri döner
+remove-migration
+drop-database

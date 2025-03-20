@@ -7,18 +7,6 @@ using System.Threading.Tasks;
 
 namespace EF_Core_Intro.Models
 {
-    //internal class Personel
-    //{
-    //    // pk için -> ID, PersonelId
-    //    public int PersonelID { get; set; }
-    //    public string Ad { get; set; }
-    //    public string Soyad { get; set; }
-    //    public decimal Maas { get; set; }
-    //    public int BolumId { get; set; }
-
-    //    public PersonelDetay? personelDetay { get; set; }
-    //    public ICollection<Bolum>? Bolumler { get; set; }
-    //}
     internal class Personel
     {
         // pk için -> ID, PersonelId

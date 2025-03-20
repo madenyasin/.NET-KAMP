@@ -1,0 +1,18 @@
+var - ilk değer ataması yapıldığı anda tip belirlenir. daha sonra tip değişmez
+
+
+
+EXTENSİON METHODS
+static sınıflara yazılır - metodun da static olması gerekir
+
+hangi yapıya bağlanıcaksa ilk paramtrede bağlanılacak yapı this keywordu ile yapılır.
+
+LINQ
+linq sorguları deferred execution olarak çalışır.
+
+normal akış şeklide çalışmaz.
+
+çağırıldığı yerde çalışır.
+
+tolist gibi metotlar acil olarak sorguyu çalıştırma yetkisine sahiptir.
+code first

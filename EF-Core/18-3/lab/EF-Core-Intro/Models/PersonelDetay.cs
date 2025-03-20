@@ -1,5 +1,4 @@
-﻿using EF_Core_Intro.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,17 +6,8 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EF_Core_Intro
+namespace EF_Core_Intro.Models
 {
-    //internal class PersonelDetay
-    //{
-    //    public int PersonelDetayyID { get; set; }
-    //    public string SicilNotu { get; set; }
-
-    //    [ForeignKey("personelDetayId")]
-    //    public Personel? personel { get; set; }
-
-    //}
     internal class PersonelDetay
     {
         public int PersonelDetayID { get; set; } // Düzeltilmiş property adı

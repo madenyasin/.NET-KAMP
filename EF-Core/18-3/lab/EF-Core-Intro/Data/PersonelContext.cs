@@ -13,7 +13,6 @@ namespace EF_Core_Intro.Data
         public DbSet<Personel> Personeller { get; set; }
         public DbSet<Bolum> Bolumler { get; set; }
         public DbSet<PersonelDetay> PersonelDetaylar { get; set; }
-        //public DbSet<PersonelBolum> PersonelBolumler { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

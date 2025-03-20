@@ -1,0 +1,13 @@
+polimorfizm 
+interface
+kalıtım
+
+notasyon ve isimlendirme - 15 puan
+platform bağımsızlığı
+klasörleme (interface'ler, class'lar, ...)
+açıklama satırı - summary
+gerekirse hata yönetimi
+
+
+işler sınavda sarpa sararsa vs'deki migrations klasörünü ve veritabanını sunucudan silebilirsin.
+
