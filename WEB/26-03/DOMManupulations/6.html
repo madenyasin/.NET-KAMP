@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getData() {
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+
+
+                if (xhr.status == 200 && xhr.readyState == 4) {
+                    let div = document.getElementById("jsonData")
+                    div.innerHTML = xhr.responseText
+                    alert(div.innerHTML);
+                    tabloOlustur(JSON.parse(div.innerHTML));
+                }
+            };
+            xhr.open("GET", "https://reqres.in/api/users?page=2", true);
+            xhr.send();
+        }
+
+        function tabloOlustur(json) {
+            let tbl = document.getElementById("tablo");
+            let satirlar = "";
+            for (const element of json.data) {
+                satirlar += `<tr>
+                    <td> ${element.first_name} </td>
+                    <td> ${element.last_name}  </td>
+                    <td><img src="${element.avatar}"></td>
+                    </tr> `
+            }
+            tbl.innerHTML = satirlar;
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <button onclick="getData()">GET DATA</button>
+    <div id="jsonData"></div>
+    <table id="tablo"> </table>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+main {
+    width: 1200px;
+    height: 820px;
+    background-color: lightblue;
+    display: grid;
+
+    grid-template-columns: 200px 800px 200px;
+    grid-template-rows: 170px 50px 550px 50px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.kutu {
+    background-color: orange;
+    border: 1px solid #333;
+}
+
+.header{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav{
+    grid-column: 1/4;
+}
+
+.footer{
+    grid-column: 1/4;
+}
+
+#navigation_item a {
+    margin-right: 35px;
+}
+#navigation_item{
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+.header img {
+    height: 170px;   
+    width: 1200px;
+}
+.kutu .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-body {
+    flex-grow: 1;
+}
+
+.card-title, .card-text {
+    margin-bottom: 1rem;
+}

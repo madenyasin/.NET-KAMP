@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+
+        function elementEkle() {
+            let div = document.getElementById("kutu");
+            let h1 = document.createElement("h1");
+            h1.innerHTML = "bu etiket yeni oluşturuldu"
+            div.appendChild(h1)
+        }
+        function elementEkle2() {
+            let div = document.getElementById("kutu");
+            div.innerHTML = "<h2>deneme</h2>"
+            div.appendChild(h1)
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="kutu"></div>
+    <button onclick="elementEkle()"> ekle </button>
+    <button onclick="elementEkle2()"> ekle2 </button>
+</body>
+
+</html>

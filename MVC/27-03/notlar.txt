@@ -1,0 +1,29 @@
+MVC bir arch design pattern'dir.
+
+mvc dağıtık mimari üzerinde çalışan bir design pattern'dir.
+
+dağıtık mimari -> istemci, sunucu    
+
+mvc'de controller içindeki metotlara action deniyormuş
+
+.../ControllerNama/ActionName/id
+.../AreaName/ControllerNama/ActionName/id
+
+NŞA'da bir controller'ın varsayılan aksiyonu Index'dir.
+
+razor ile html ile c# kodları kombinlenebilir
+
+
+controller'dan view'e veri aktarma yöntemleri
+ViewData
+ViewBag		******
+TempData
+Model		******************
+ViewModel	************
+
+view'dan controller'a  veri gönderme yöntemleri
+QueryString	***
+RequestForm
+IFormCollection
+Parametre	********
+Model		*****************

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let d1 = new Array();
+        let d2 = new Array(10);
+        let d3 = new Array(1, 2, 3, 4, 5);
+        let d4 = [];
+        let d5 = [4, 5, 6];
+
+        // for-in, for-of, foreach
+
+        for (let index in d3) {
+            document.writeln(index + ":" + d3[index])
+        }
+        document.writeln("<br>")
+        for (let item of d3) {
+            document.writeln(item)
+        }
+        document.writeln("<br>")
+
+        d3.forEach(x => document.writeln(x))
+
+        // last in first out
+        d3.push(11);
+        d3.pop();
+
+
+        // fifo: bir diziyi queue gigi kullanabilirsin
+        d3.unshift(222);
+        d3.shift();
+
+
+        document.writeln(d3.findIndex(x=>x==5));
+        let x = d3.findIndex(function (number){
+            return number == 5;
+        });
+        document.writeln(x)
+    </script>
+</body>
+
+</html>

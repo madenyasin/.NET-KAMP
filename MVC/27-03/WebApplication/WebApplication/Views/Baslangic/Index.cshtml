@@ -1,0 +1,22 @@
+﻿<h1>Merhaba MVC Core</h1>
+
+@* cshtml dosyasına element ekleme *@
+1. yöntem
+
+<a href="~/Home/Index" class="btn btn-outline-primary">Ana Sayfa</a>
+<br />
+2. yöntem 
+
+@Html.ActionLink("Home","Index","Home",null, new{@class="btn btn-danger"})
+
+Html.ActionLink("Home","Index","Home");
+<br />
+3.yöntem
+<a asp-action="Index" asp-controller="Home" class="btn btn-outline-dark" onclick="mesajGoster()">AnaSayfa</a>
+
+<div class="mavi">
+    Deneme123
+</div>
+
+
+<br />

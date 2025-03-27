@@ -1,0 +1,46 @@
+﻿@model Personel
+<form method="get" asp-action="VerileriYakala_GET">
+    <input type="text" id="ad" name="ad" />
+    <input type="text" id="soyad" name="soyad" />
+    <input type="text" id="yas" name="yas" />
+    <input type="submit" value="Gönder" />
+</form>
+<hr />
+<form method="post" asp-action="VerileriYakala_RF">
+    <input type="text" id="ad" name="ad" />
+    <input type="text" id="soyad" name="soyad" />
+    <input type="text" id="yas" name="yas" />
+    <input type="submit" value="Gönder" />
+</form>
+
+<hr />
+<form method="post" asp-action="VerileriYakala_IFC">
+    <input type="text" id="ad" name="ad" />
+    <input type="text" id="soyad" name="soyad" />
+    <input type="text" id="yas" name="yas" />
+    <input type="submit" value="Gönder" />
+</form>
+
+<hr />
+<form method="post" asp-action="VerileriYakala_PRMs">
+    <input type="text" id="ad" name="ad" />
+    <input type="text" id="soyad" name="soyad" />
+    <input type="text" id="yas" name="yas" />
+    <input type="submit" value="Gönder" />
+</form>
+
+<hr />
+<form method="post" asp-action="VerileriYakalaModel">
+    <input type="text" id="ad" name="ad" />
+    <input type="text" id="soyad" name="soyad" />
+    <input type="text" id="yas" name="yas" />
+    <input type="submit" value="Gönder" />
+</form>
+
+<hr />
+<form method="post" asp-action="VerileriYakalaModel">
+    <input type="text" asp-for="Ad" />
+    <input type="text" asp-for="Soyad" />
+    <input type="text" asp-for="Yas" />
+    <input type="submit" value="Gönder" />
+</form>

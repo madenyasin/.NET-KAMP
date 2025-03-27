@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mavi{
+            color: steelblue;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 30px;
+        }
+    </style>
+    <script>
+        function bul() {
+            let item = document.getElementById("greeting");
+            item.innerHTML = "Welcome!"
+
+            item.style.color = "darkorange"
+
+            item.className = "mavi"
+
+            item.setAttribute("style","color:red");
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1 id="greeting">Hello!</h1>
+    <button onclick="bul()">ID'ye göre ara</button>
+</body>
+
+</html>

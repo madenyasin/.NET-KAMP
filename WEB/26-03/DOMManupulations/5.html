@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function kontrolEt() {
+            let inputs = document.querySelectorAll("input");
+            for (let element of inputs) {
+                if (element.value === "") {
+                    element.style.border = "1px solid red";
+                    return false;
+                }
+            }
+
+
+            // let name = document.getElementById("name");
+            // let surname = document.getElementById("surname");
+            // let job = document.getElementById("job");
+            // if (name.value === "") {
+            //     name.style.border = "1px solid red"
+            //     return false;
+            // }
+            // if (surname.value === "") {
+            //     surname.style.border = "1px solid red"
+            //     return false;
+            // }
+            // if (job.value === "") {
+            //     job.style.border = "1px solid red"
+            //     return false;
+            // }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <form>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <input type="text" id="name">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Surname:</td>
+                <td>
+                    <input type="text" id="surname">
+                </td>
+            </tr>
+            <tr>
+                <td>Job:</td>
+                <td>
+                    <input type="text" id="job">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input onclick="return kontrolEt()" type="submit" value="Gönder">
+                </td>
+            </tr>
+
+        </form>
+
+    </table>
+</body>
+
+</html>

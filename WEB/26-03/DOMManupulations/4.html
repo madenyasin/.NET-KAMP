@@ -1,0 +1,42 @@
+<!-- kullanıcı tarafından girilern satır sutuna göre tablo oluşur. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function tabloOlustur() {
+            let satir = parseInt(document.querySelector('#satir').value);
+            let sutun = parseInt(document.querySelector('#sutun').value);
+
+            let tablo = document.getElementById("tablo");
+
+            let strTable = "";
+            for (let i = 0; i < satir; i++) {
+
+                strTable += "<tr>"
+                for (let j = 0; j < sutun; j++) {
+                    strTable += "<td>Selam</td>"
+
+                }
+                strTable += "</tr>"
+
+            }
+            tablo.innerHTML = strTable;
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="text" id="satir" placeholder="Satir sayisi">
+    <input type="text" id="sutun" placeholder="Sutun sayisi">
+    <button onclick="tabloOlustur()">Olustur</button>
+
+    <table id="tablo" border="1"></table>
+</body>
+
+</html>

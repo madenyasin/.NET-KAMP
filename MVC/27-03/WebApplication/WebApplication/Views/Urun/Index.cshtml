@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Urun>
+
+<a asp-action="UrunEkle">Yeni Ürün Ekle</a>
+<table class="table table-striped">
+    @foreach (var urun in Model)
+    {
+        <tr>
+            <td>@urun.UrunID</td>
+            <td>@urun.UrunAdi</td>
+            <td>@urun.Fiyat</td>
+        </tr>
+    }
+</table>

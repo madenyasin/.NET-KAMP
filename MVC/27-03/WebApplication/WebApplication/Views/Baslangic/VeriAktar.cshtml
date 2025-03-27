@@ -1,0 +1,20 @@
+﻿@ViewData["mesaj"]
+@ViewBag.Message
+<hr>
+<br />
+@ViewData["urun"].ToString()
+
+<br />
+@ViewBag.Product.ToString()
+
+<hr>
+<table class="table table-striped">
+    @foreach (var item in ViewBag.Urunler)
+    {
+        <tr>
+            <td>@item.UrunID</td>
+            <td>@item.UrunAdi</td>
+            <td>@item.Fiyat</td>
+        </tr>
+    }
+</table>
