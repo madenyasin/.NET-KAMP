@@ -1,0 +1,20 @@
+﻿EF CORE ile MVC CORE kullanımı
+
+(SQL, EF-CORE, HTML, CSS, JS, MVC-CORE, C#, OOP, ...)
+
+//1-Gerekli paketleri nugget üzerinden indir
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.EntityFrameworkCore.SqlServer
+//2-Modelleri oluştur
+//3-Nav. Prop.'ları belirle...
+//4-CFG sınıflarını oluştur
+//5-migration ile database oluştur
+//6- Add-Migration InitDB
+//7- update-database
+
+
+Urun ve Kategori diye iki model oluşturunuz.
+UrunID, UrunAdi, KategoriID, Fiyat, Resim, Açıklama
+
+***nav prop'ler nullable olmalıdır.

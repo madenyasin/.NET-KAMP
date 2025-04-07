@@ -1,0 +1,142 @@
+﻿@model IEnumerable<WebApplication1.Models.Urun>
+@* 
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UrunAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategori)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aciklama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UrunID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UrunID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UrunID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> *@
+
+
+<h1>Ürün Listesi</h1>
+
+<p>
+    @* "Create New" linkini Bootstrap butonu olarak stilize edelim *@
+    <a asp-action="Create" class="btn btn-success">
+        <i class="fas fa-plus"></i> Yeni Ürün Ekle  @* İkon eklemek (Font Awesome varsayılarak) isteğe bağlıdır *@
+    </a>
+</p>
+
+@* Tablonun küçük ekranlarda yatay kaydırılabilir olmasını sağlayalım *@
+<div class="table-responsive">
+    @* Temel Bootstrap tablo sınıflarını ekleyelim: çizgili, üzerine gelince vurgulu, kenarlıklı *@
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-light">
+            @* Başlık kısmına hafif bir arkaplan verelim *@
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().UrunAdi) @* Model boşsa hata almamak için FirstOrDefault() kullanmak daha güvenli olabilir *@
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Fiyat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Resim)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Kategori)
+                </th>
+                <th style="width: 180px;">İşlemler</th> @* İşlemler sütununa sabit bir genişlik vermek düzeni koruyabilir *@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UrunAdi)
+                    </td>
+                    <td>
+                        @* Fiyatı para birimi olarak formatlayalım *@
+                        @item.Fiyat.ToString("C")
+                    </td>
+                    <td>
+                        @* Eğer Resim bir URL ise, onu img etiketi içinde gösterelim *@
+                        @if (!string.IsNullOrEmpty(item.Resim))
+                        {
+                            <img src="~/Resimler/@item.Resim" alt="@item.UrunAdi" class="img-thumbnail" style="max-width: 80px; max-height: 80px; object-fit: contain;" />
+                            @* img-thumbnail: Resme çerçeve ekler
+                           style: Resmin çok büyümesini engeller
+                           object-fit: contain: Resmin oranını korur *@
+                        }
+                        else
+                        {
+                            <span class="text-muted">Resim Yok</span> @* Resim yoksa bilgi verelim *@
+                        }
+                    </td>
+             
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Ürün İşlemleri">
+                            @* btn-sm kaldırıldı ve metin eklendi *@
+                            <a asp-action="Edit" asp-route-id="@item.UrunID" class="btn btn-outline-primary" title="Düzenle">
+                                <i class="fas fa-edit me-1"></i> Düzenle @* me-1: ikon ile metin arasına küçük boşluk *@
+                            </a>
+                            @* btn-sm kaldırıldı ve metin eklendi *@
+                            <a asp-action="Details" asp-route-id="@item.UrunID" class="btn btn-outline-info" title="Detaylar">
+                                <i class="fas fa-info-circle me-1"></i> Detay
+                            </a>
+                            @* btn-sm kaldırıldı ve metin eklendi *@
+                            <a asp-action="Delete" asp-route-id="@item.UrunID" class="btn btn-outline-danger" title="Sil">
+                                <i class="fas fa-trash-alt me-1"></i> Sil
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
