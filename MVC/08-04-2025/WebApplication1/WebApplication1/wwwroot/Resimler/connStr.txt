@@ -1,0 +1,11 @@
+Data source=.;initial catalog=Northwind;integrated security=true;trust server certificate=true
+
+
+Scaffold-DbContext "Data source=.;initial catalog=Northwind;integrated security=true;trust server certificate=true" Microsoft.EntityFrameworkCore.SqlServer -o Models -tables Products, Categories, Suppliers
+
+default project
+
+buld hatası olmamalı
+
+
+8.0.14

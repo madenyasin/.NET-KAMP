@@ -1,0 +1,107 @@
+﻿@model Urun
+@* <form asp-controller="Urun" asp-action="UrunEkle" method="post" enctype="multipart/form-data">
+
+    <div>
+        <label asp-for="UrunAdi"></label>
+        <input asp-for="UrunAdi" class="form-control" required />
+    </div>
+
+    <div>
+        <label asp-for="KategoriID"></label>
+        <select asp-for="KategoriID" asp-items="@ViewBag.Kategoriler" class="form-control" required>
+            
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="Fiyat"></label>
+        <input asp-for="Fiyat" type="number" step="0.01" class="form-control" required />
+    </div>
+
+    <div>
+        <label asp-for="Resim"></label>
+        <input name="urunResmi" class="form-control" type="file"/>
+    </div>
+
+    <div>
+        <label asp-for="Aciklama"></label>
+        <textarea asp-for="Aciklama" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Ürünü Ekle</button>
+    </div>
+
+</form>
+ *@
+
+@* Formu görsel olarak gruplamak için bir Card içerisine alabiliriz (isteğe bağlı) *@
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h4 class="my-0 fw-normal">Yeni Ürün Bilgileri</h4>
+    </div>
+    <div class="card-body">
+        @* Hata mesajlarını göstermek için Validation Summary (varsa) *@
+        @* <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div> *@
+
+        <form asp-controller="Urun" asp-action="UrunEkle" method="post" enctype="multipart/form-data">
+
+            @* Ürün Adı Alanı *@
+            <div class="mb-3">
+                @* Margin bottom (alt boşluk) ekler *@
+                <label asp-for="UrunAdi" class="form-label"></label> @* Bootstrap label sınıfı *@
+                <input asp-for="UrunAdi" class="form-control" required /> @* Bootstrap input sınıfı *@
+                <span asp-validation-for="UrunAdi" class="text-danger"></span> @* Doğrulama hatası mesajı için yer *@
+            </div>
+
+            @* Kategori Seçim Alanı *@
+            <div class="mb-3">
+                <label asp-for="KategoriID" class="form-label">Kategori</label> @* Etiketi daha açıklayıcı yapabiliriz *@
+                <select asp-for="KategoriID" asp-items="@ViewBag.Kategoriler" class="form-select" required>
+                    @* Select için form-select sınıfı *@
+                    <option value="">-- Kategori Seçiniz --</option> @* Varsayılan boş seçenek *@
+                </select>
+                <span asp-validation-for="KategoriID" class="text-danger"></span>
+            </div>
+
+            @* Fiyat Alanı *@
+            <div class="mb-3">
+                <label asp-for="Fiyat" class="form-label"></label>
+                @* type="number" ve step tarayıcı tarafında sayısal giriş ve artış adımı sağlar *@
+                <input asp-for="Fiyat" type="number" step="0.01" min="0" class="form-control" required />
+                <span asp-validation-for="Fiyat" class="text-danger"></span>
+            </div>
+
+            @* Resim Yükleme Alanı *@
+            <div class="mb-3">
+                @* Modeldeki Resim alanı muhtemelen string (dosya yolu) içindir.
+                    Dosyayı almak için ayrı bir IFormFile parametresi (örn: urunResmi) veya modelde IFormFile tipinde bir property kullanılır.
+                    Burada name="urunResmi" kullanıldığı için Controller'da IFormFile urunResmi parametresi bekleniyor varsayılmıştır.
+                    Eğer modelinizde IFormFile tipinde bir "ResimDosyasi" property'si varsa, asp-for="ResimDosyasi" kullanın. *@
+                <label asp-for="Resim" class="form-label">Ürün Resmi</label> @* Etiketi açıklayıcı yapalım *@
+                <input name="urunResmi" type="file" class="form-control" accept="*" /> @* accept ile sadece resim dosyalarını filtreleyebiliriz *@
+                @* Dosya yükleme için validation span genellikle kullanılmaz, sunucu tarafında kontrol edilir. *@
+                @* <span asp-validation-for="Resim" class="text-danger"></span> *@ @* Modeldeki Resim (string) alanı için gerekirse *@
+            </div>
+
+            @* Açıklama Alanı *@
+            <div class="mb-3">
+                <label asp-for="Aciklama" class="form-label"></label>
+                <textarea asp-for="Aciklama" class="form-control" rows="4"></textarea> @* rows ile başlangıç yüksekliği ayarlanır *@
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+
+            @* Buton Alanı *@
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                @* Butonu sağa yaslamak için flex sınıfları (isteğe bağlı) *@
+                @* İptal veya Geri dön butonu da eklenebilir *@
+                @* <a asp-action="Index" class="btn btn-secondary me-md-2">İptal</a> *@
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> @* Kaydet ikonu (Font Awesome varsayılarak) *@
+                    Ürünü Ekle
+                </button>
+            </div>
+
+        </form>
+    </div> @* card-body sonu *@
+</div> @* card sonu *@
