@@ -1,0 +1,61 @@
+﻿@model KullaniciEkleVM
+
+<form asp-action="KullaniciEkle" method="post">
+
+
+    <table>
+        <tr>
+            <td>
+                <label asp-for="Ad"></label>
+            </td>
+            <td>
+                <input asp-for="Ad"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Soyad"></label>
+            </td>
+            <td>
+                <input asp-for="Soyad"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="KullaniciAdi"></label>
+            </td>
+            <td>
+                <input asp-for="KullaniciAdi"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Sifre"></label>
+            </td>
+            <td>
+                <input asp-for="Sifre"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="SifreTekrari"></label>
+            </td>
+            <td>
+                <input asp-for="SifreTekrari"></input>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="KAYDET" /></td>
+
+        </tr>
+        <tr>
+            <td colspan="2">
+                @* @Html.ValidationSummary() *@
+                <div asp-validation-summary="All"></div>
+            </td>
+        </tr>
+    </table>
+
+
+</form>

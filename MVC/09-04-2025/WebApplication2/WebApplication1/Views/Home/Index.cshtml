@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Create", "Personel")">Personel Ekle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("KullaniciEkle", "Personel")">Kullanıcı Ekle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("MusteriEkle", "Personel")">Musteri Ekle</a>
+            </li>
+        </ul>
+    </div>
+</nav>

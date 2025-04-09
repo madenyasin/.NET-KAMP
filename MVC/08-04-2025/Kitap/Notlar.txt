@@ -1,0 +1,16 @@
+Konu: Kitap
+
+Bir sahaf için kitap verilerinin tutulaca?? web uygulamas? yaz?lacakt?r.
+
+*** Veritaban? modellemesi EfCore - ModelFirst
+*** ?li?kileri 1-M olarak kabul ediniz.
+
+Modeller: Kitap, Yazar, Kategori, Yay?nevi
+Kitap: (id, ad, fiyat, kapakResmi, özet, sayfa sayisi)
+Kategori: (id, ad)
+Yazar: (id, ad, soyad, biyografi)
+yay?nevi: (id, ad)
+
+
+
+1-?lk a?amada ef core ile veritaban?n? olu?turunuz
