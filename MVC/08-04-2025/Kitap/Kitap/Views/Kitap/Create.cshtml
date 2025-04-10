@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Kitap.Ad" class="control-label"></label>
                 <input asp-for="Kitap.Ad" class="form-control" />
@@ -33,32 +33,32 @@
                 <span asp-validation-for="Kitap.SayfaSayisi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kitap.KapakResmi" class="form-label">Kapak Resmi Yükle</label>
-                <input asp-for="Kitap.KapakResmi" class="form-control" type="file">
+                <label asp-for="Kitap.KapakResmiDosyasi" class="form-label">Kapak Resmi Yükle</label>
+                <input asp-for="Kitap.KapakResmiDosyasi" class="form-control" type="file">
             </div>
             <div class="form-group">
                 <label asp-for="Kitap.YayinEviAdi" class="control-label"></label>
                 @* <input asp-for="Kitap.YayinEviAdi" class="form-control" /> *@
-                <select asp-for="Kitap.YayinEviAdi" asp-items="@Model.YayinEvis" class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                <select asp-for="Kitap.YayinEviId" asp-items="@Model.YayinEvis" class="form-select" aria-label="Default select example">
+                    <option selected>Yayinevi Seçiniz</option>
                 </select>
-                <span asp-validation-for="Kitap.YayinEviAdi" class="text-danger"></span>
+                <span asp-validation-for="Kitap.YayinEviId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Kitap.KategoriAdi" class="control-label"></label>
                 @* <input asp-for="Kitap.KategoriAdi" class="form-control" /> *@
-                <select asp-for="Kitap.KategoriAdi" asp-items="@Model.Kategoriler" class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                <select asp-for="Kitap.KategoriId" asp-items="@Model.Kategoriler" class="form-select" aria-label="Default select example">
+                    <option selected>Kategori Seçiniz</option>
                 </select>
-                <span asp-validation-for="Kitap.KategoriAdi" class="text-danger"></span>
+                <span asp-validation-for="Kitap.KategoriId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Kitap.YazarAdi" class="control-label"></label>
                 @* <input asp-for="Kitap.YazarAdi" class="form-control" /> *@
-                <select asp-for="Kitap.YazarAdi" asp-items="@Model.Yazarlar" class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                <select asp-for="Kitap.YazarId" asp-items="@Model.Yazarlar" class="form-select" aria-label="Default select example">
+                    <option selected>Yazar Seçiniz</option>
                 </select>
-                <span asp-validation-for="Kitap.YazarAdi" class="text-danger"></span>
+                <span asp-validation-for="Kitap.YazarId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -13,7 +13,5 @@ namespace ex02
         {
             return $"{ID} - {Ad} - {Fiyat} - KirikMi: {KirikMi}";
         }
-
-        
     }
 }

@@ -55,7 +55,8 @@
                 @Html.DisplayFor(modelItem => item.Fiyat)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.KapakResmi)
+                @* @Html.DisplayFor(modelItem => item.KapakResmi) *@
+                    <img src="~/Resimler/@item.KapakResmi" alt="@item.KapakResmi" width="200"/>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ozet)

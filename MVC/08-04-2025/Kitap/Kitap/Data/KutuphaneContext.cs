@@ -17,7 +17,7 @@ namespace Kitap.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(@"Data source=.;initial catalog=KitapDBB;integrated security=true;trust server certificate=true");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-A9QK5E9\\SQLEXPRESS;Database=SeninVeritabaniAdi4;Trusted_Connection=True;TrustServerCertificate=True;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

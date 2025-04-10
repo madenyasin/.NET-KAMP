@@ -23,13 +23,16 @@ namespace Kitap.Controllers
             {
                 Id = x.Id,
                 Ad = x.Ad,
+                Ozet = x.Ozet,
                 Fiyat = x.Fiyat,
                 KapakResmi = x.KapakResmi,
-                KategoriAdi = x.Kategori.Ad,
-                Ozet = x.Ozet,
                 SayfaSayisi = x.SayfaSayisi,
+                YazarId = x.YazarId,
+                KategoriId = x.KategoriId,
+                YayinEviId = x.YayinEviId,
+                KategoriAdi = x.Kategori.Ad,
                 YayinEviAdi = x.YayinEvi.Ad,
-                YazarAdi = x.Yazar.Ad
+                YazarAdi = x.Yazar.Ad,
             }).ToList();
             return View(kitaplar);
         }
@@ -64,8 +67,15 @@ namespace Kitap.Controllers
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
-            return View();
+            // Hata durumunda dropdown'ları tekrar doldur
+            var vm = new KitapEkleForm_VM
+            {
+                Kategoriler = new SelectList(_dbContext.Kategoriler, "Id", "Ad"),
+                Yazarlar = new SelectList(_dbContext.Yazarlar, "Id", "Ad"),
+                YayinEvis = new SelectList(_dbContext.YayinEvis, "Id", "Ad"),
+                Kitap = new Kitap_VM()
+            };
+            return View(vm);
         }
     }
 }

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kitap.Migrations
 {
     [DbContext(typeof(KutuphaneContext))]
-    [Migration("20250409124402_Init2")]
-    partial class Init2
+    [Migration("20250409212343_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
