@@ -1,0 +1,13 @@
+﻿@using Kitap.CustomHelpers
+@addTagHelper *, Kitap
+
+@Html.ActionLink("Kitap", "Index", "Kitap")
+
+<marquee>Deneme</marquee>
+@Html.HaberBandi("merhaba")
+
+<haber-bandi ekranda-gozukecek-mesaj="Merhaba tag helper">
+
+</haber-bandi>
+
+<haber-bandi yazi-yonu="right" ekranda-gozukecek-mesaj="ŞOK ŞOK ŞOK"></haber-bandi>
