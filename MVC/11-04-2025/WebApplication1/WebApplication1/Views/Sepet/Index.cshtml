@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication1.Models.Urunler>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+	<a asp-action="Sepet" >Sepete Git</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.UrunId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.UrunAdi)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.KategoriId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Fiyat)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Aciklama)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Resim)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.UrunId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.UrunAdi)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.KategoriId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Fiyat)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Aciklama)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Resim)
+				</td>
+				<td>
+					<a href="@Url.Action("SepeteEkle", "Sepet", new { id = item.UrunId})" class="btn btn-primary">Sepete Ekle</a>
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+					@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+					@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

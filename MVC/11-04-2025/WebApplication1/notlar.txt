@@ -1,0 +1,21 @@
+State Management (Durum Yönetimi)
+
+*** HTTP => Stateless
+
+1- QueryString (Client)
+2- Cookies (Client)
+3- Session (Server)
+
+// üründb - code first - db first
+ürün db veritabanýný kullanarak tüm ürünleri listele
+sonra sepete ekle diye bir link ya da buton oluþtur
+kullanýcý seçtiði ürünleri çerez üzerinde tutunuz
+sepetteki ürünler diye bir link olacak;
+	kullanýcý seçince sepete eklediði ürünleri görmeli
+
+ASP.NET CORE'da SESSION kullanýmýndaki deðiþiklikler...
+1* Doðrudan Session kullanýmý engellenmiþtir.
+	program.cs üzerinde servise -> addSession, middleware: app -> use session
+2* 1 dakika altýnda yaþam süresi belirlenebilir.
+3* Eskiden, Session otomatik olarak object veri tipi beklerdi.
+	CORE ile; ya int ya string ya da binary veri tipi bekleniyor.

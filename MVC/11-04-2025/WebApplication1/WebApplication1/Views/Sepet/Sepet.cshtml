@@ -1,0 +1,9 @@
+﻿@model List<Urunler>
+
+<h1>Sepet</h1>
+
+<ul>
+    @foreach(var item in @Model){
+        <li>@item.UrunId</li>
+    }
+</ul>
