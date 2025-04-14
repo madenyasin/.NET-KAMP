@@ -1,0 +1,33 @@
+﻿@model WebApplication1.Models.VM.Login.LoginForm_VM
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded">
+                <div class="card-header text-center bg-primary text-white">
+                    <h4>Kayıt Ol / Giriş Yap</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Login" asp-controller="Galeri" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Login.KullaniciAdi" class="form-label"></label>
+                            <input asp-for="Login.KullaniciAdi" class="form-control" placeholder="Kullanıcı adınızı girin">
+                            <span asp-validation-for="Login.KullaniciAdi" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Login.Sifre" class="form-label"></label>
+                            <input asp-for="Login.Sifre" type="password" class="form-control" placeholder="Şifrenizi girin">
+                            <span asp-validation-for="Login.Sifre" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Login.SifreTekrar" class="form-label"></label>
+                            <input asp-for="Login.SifreTekrar" type="password" class="form-control" placeholder="Şifrenizi tekrar girin">
+                            <span asp-validation-for="Login.SifreTekrar" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Giriş Yap</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

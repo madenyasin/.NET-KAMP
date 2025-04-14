@@ -1,0 +1,69 @@
+﻿@model WebApplication1.Models.VM.Arac.AracEkleForm_VM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AracEkle_VM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Arac.Plaka" class="control-label"></label>
+                <input asp-for="Arac.Plaka" class="form-control" />
+                <span asp-validation-for="Arac.Plaka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Arac.Model" class="control-label"></label>
+                <input asp-for="Arac.Model" class="form-control" />
+                <span asp-validation-for="Arac.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Arac.Fiyat" class="control-label"></label>
+                <input asp-for="Arac.Fiyat" class="form-control" />
+                <span asp-validation-for="Arac.Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Arac.Renk" class="control-label"></label>
+                <input asp-for="Arac.Renk" class="form-control" />
+                <span asp-validation-for="Arac.Renk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Arac.Aciklama" class="control-label"></label>
+                <input asp-for="Arac.Aciklama" class="form-control" />
+                <span asp-validation-for="Arac.Aciklama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Arac.MarkaId" class="control-label"></label>
+                <select asp-for="Arac.MarkaId" asp-items="@Model.Markalar" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                </select>
+
+                <span asp-validation-for="Arac.MarkaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Arac.EkleyenUyeId" class="control-label"></label>
+                <input asp-for="Arac.EkleyenUyeId" class="form-control" />
+                <span asp-validation-for="Arac.EkleyenUyeId" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

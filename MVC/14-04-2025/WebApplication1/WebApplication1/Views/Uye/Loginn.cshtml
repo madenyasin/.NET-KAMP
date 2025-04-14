@@ -1,0 +1,63 @@
+﻿@model WebApplication1.Models.VM.OtomobilEkleForm_VM
+
+@{
+    ViewData["Title"] = "Loginn";
+}
+
+<h1>Loginn</h1>
+
+<h4>OtomobilEkle_VM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Loginn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Otomobil.Plaka" class="control-label"></label>
+                <input asp-for="Otomobil.Plaka" class="form-control" />
+                <span asp-validation-for="Otomobil.Plaka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Otomobil.Model" class="control-label"></label>
+                <input asp-for="Otomobil.Model" class="form-control" />
+                <span asp-validation-for="Otomobil.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Otomobil.Fiyat" class="control-label"></label>
+                <input asp-for="Otomobil.Fiyat" class="form-control" />
+                <span asp-validation-for="Otomobil.Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Otomobil.Renk" class="control-label"></label>
+                <input asp-for="Otomobil.Renk" class="form-control" />
+                <span asp-validation-for="Otomobil.Renk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Otomobil.Aciklama" class="control-label"></label>
+                <input asp-for="Otomobil.Aciklama" class="form-control" />
+                <span asp-validation-for="Otomobil.Aciklama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Otomobil.MarkaId" class="control-label"></label>
+                <input asp-for="Otomobil.MarkaId" class="form-control" />
+                <span asp-validation-for="Otomobil.MarkaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Otomobil.EkleyenUyeId" class="control-label"></label>
+                <input asp-for="Otomobil.EkleyenUyeId" class="form-control" />
+                <span asp-validation-for="Otomobil.EkleyenUyeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

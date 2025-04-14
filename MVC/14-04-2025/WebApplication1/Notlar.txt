@@ -1,0 +1,12 @@
+UYE - ad soyad kullaniciadi ?ifre
+galeri uygulamas? - araç, marka
+plaka marka model fiyat renk aç?klama
+sadece üye olanlar veri ekleyebilirken digerleri sadece görebilmeli 
+action filter
+ActionFilterAttiribute
+
+
+{
+	asp-validation-summary önemli
+	modelstate.addmodelerror("hata", "mesaj")
+}
