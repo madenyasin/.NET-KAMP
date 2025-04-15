@@ -1,0 +1,19 @@
+﻿    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.15">
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.15" />
+
+
+HATA: Could not load assembly 'WebApplication1'. Ensure it is referenced by the startup project 'WebApplication2'.
+default projeyi üzerinde çalıştığın proje ile değiştir. pm console ve vs genelinde
+
+add-migration
+remove-migration
+update-database
+drop-database
+
+
+IdentityUser<int> : primary key'i integer olsun 
+
+await async Task<>

@@ -1,0 +1,28 @@
+﻿<b>@User.Identity.Name</b>
+
+@if (User.Identity.Name is null)
+{
+    // sign in değilse
+    <a asp-area="" asp-controller="Login" asp-action="Register">Üye Ol</a>
+    <a asp-area="" asp-controller="Login" asp-action="Index">Giriş Yap</a>
+}
+else
+{
+    // sign in ise
+
+
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-area="AdminPanel" asp-controller="Panel" asp-action="Index">Yönetim Paneli</a>
+
+    }
+    else
+    {
+
+        <a asp-area="UyePanel" asp-controller="Panel" asp-action="Index">Üye Paneli</a>
+
+
+    }
+    <a asp-area="" asp-controller="Login" asp-action="Logout">Çıkış Yap</a>
+
+}
