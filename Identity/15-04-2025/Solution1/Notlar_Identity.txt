@@ -17,3 +17,61 @@ drop-database
 IdentityUser<int> : primary key'i integer olsun 
 
 await async Task<>
+
+------------------------
+
+üyelik sistemi olan bir haber sitesi geliştiriniz
+
+kullanılacak teknolojiler
+sql server,
+mvc core,
+ef code first, model first
+
+
+Haber:      baslik, detay, resim, eklendiği tarih, kim ekledi, Kategorisi
+Kategori:   ad, aciklama
+Roller:     admin, editor, 
+
+
+admin: ekleme, silme, güncelleme, 
+editor: kendi eklediklerini guncelleyebilir. yeni haber ekleyebilir. silme yapamaz.
+üye olmayan herkes: tüm haberleri görebilir. aynı zamanda haberin detayını görebilir.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

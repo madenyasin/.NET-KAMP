@@ -20,9 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\AdminPanel\Data\" />
-    <Folder Include="Areas\AdminPanel\Models\" />
     <Folder Include="Areas\UyePanel\Data\" />
-    <Folder Include="Areas\UyePanel\Models\" />
   </ItemGroup>
 
 </Project>

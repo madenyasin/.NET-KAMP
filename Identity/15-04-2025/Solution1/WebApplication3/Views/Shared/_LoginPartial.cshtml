@@ -1,0 +1,13 @@
+﻿<b>@User.Identity.Name</b>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <form asp-area="" asp-controller="Login" asp-action="Logout" method="post" class="d-inline">
+        <button type="submit" class="btn btn-link text-dark text-decoration-none">Logout</button>
+    </form>
+}
+else
+{
+    <a class="btn btn-link text-dark text-decoration-none" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+    <a class="btn btn-link text-dark text-decoration-none" asp-area="" asp-controller="Login" asp-action="Register">Register</a>
+}

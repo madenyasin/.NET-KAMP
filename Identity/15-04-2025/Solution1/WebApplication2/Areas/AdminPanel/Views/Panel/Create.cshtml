@@ -1,0 +1,59 @@
+﻿@model WebApplication2.Areas.AdminPanel.Models.ViewModels.UrunEkleForm_VM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>UrunEkle_VM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Urun.UrunAdi" class="control-label"></label>
+                <input asp-for="Urun.UrunAdi" class="form-control" />
+                <span asp-validation-for="Urun.UrunAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Urun.Fiyat" class="control-label"></label>
+                <input asp-for="Urun.Fiyat" class="form-control" />
+                <span asp-validation-for="Urun.Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Urun.Resim" class="control-label"></label>
+                <input asp-for="Urun.Resim" class="form-control" />
+                <span asp-validation-for="Urun.Resim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Urun.Aciklama" class="control-label"></label>
+                <input asp-for="Urun.Aciklama" class="form-control" />
+                <span asp-validation-for="Urun.Aciklama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Urun.KategoriId" class="control-label"></label>
+                <select asp-for="Urun.KategoriId" asp-items="@Model.Kategoriler" class="form-control">
+                    <option value="" selected disabled>Kategori Seçiniz</option>
+                </select>
+                <span asp-validation-for="Urun.KategoriId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
