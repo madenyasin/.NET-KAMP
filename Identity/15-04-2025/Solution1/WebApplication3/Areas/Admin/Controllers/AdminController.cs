@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using WebApplication3.Areas.Admin.Models.ViewModels;
-using WebApplication3.Data;
-using WebApplication3.Managers;
-using WebApplication3.Models;
+using WebApplication3.Areas.Admin.Models;  // ViewModel namespace
 
 namespace WebApplication3.Areas.Admin.Controllers
 {
@@ -14,59 +9,113 @@ namespace WebApplication3.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private readonly HaberManager _haberManager;
-        private readonly HaberDbContext _dbContext;
-        private readonly UserManager<Uye> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AdminController(HaberManager haberManager, HaberDbContext dbContext, UserManager<Uye> userManager)
+        public AdminController(UserManager<IdentityUser> userManager,
+                               RoleManager<IdentityRole> roleManager)
         {
-            _haberManager = haberManager;
-            _dbContext = dbContext;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
-        public IActionResult Create()
+        // GET: /Admin/Admin/UserList
+        public async Task<IActionResult> UserList()
         {
-            var model = new HaberEkleForm_VM
-            {
-                Kategoriler = new SelectList(_dbContext.Kategoriler.ToList(), "Id", "Ad"),
-                Haber = new HaberEkle_VM()
-            };
-            return View(model);
+            var users = _userManager.Users.ToList();
+            var model = new List<UserRolesViewModel>();
 
-        }
-        [HttpPost]
-        public IActionResult Create(HaberEkle_VM haber)
-        {
-            if (ModelState.IsValid)
+            foreach (var user in users)
             {
-                var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
-                var yeniHaber = new Haber
+                var roles = await _userManager.GetRolesAsync(user);
+                model.Add(new UserRolesViewModel
                 {
-                    Baslik = haber.Baslik,
-                    Detay = haber.Detay,
-                    ResimYolu = haber.ResimYolu,
-                    KategoriId = haber.KategoriId,
-                    UyeId = user.Id,
-                    EklendigiTarih = DateTime.Now,
-
-                };
-                var sonuc = _haberManager.HaberEkleAsync(yeniHaber).Result;
-                if (sonuc)
-                {
-                    return Redirect("~/Home/Index/");
-                }
-                else
-                {
-                    ModelState.AddModelError("HATA", "Haber eklenirken bir hata oluştu.");
-                }
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    Roles = roles
+                });
             }
-            var model = new HaberEkleForm_VM
-            {
-                Kategoriler = new SelectList(_dbContext.Kategoriler.ToList(), "Id", "Ad"),
-                Haber = new HaberEkle_VM()
-            };
+
             return View(model);
         }
+
+        // GET: /Admin/Admin/EditRoles?userId=...
+        public async Task<IActionResult> EditRoles(string userId)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+                return BadRequest();
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return NotFound();
+
+            var allRoles = _roleManager.Roles.Select(r => r.Name).ToList();
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            var vm = new EditRolesViewModel
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                AvailableRoles = allRoles,
+                SelectedRoles = userRoles
+            };
+
+            return View(vm);
+        }
+
+        // POST: /Admin/Admin/EditRoles
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditRoles(EditRolesViewModel vm)
+        {
+            if (!ModelState.IsValid)
+                return View(vm);
+
+            var user = await _userManager.FindByIdAsync(vm.UserId);
+            if (user == null)
+                return NotFound();
+
+            var currentRoles = await _userManager.GetRolesAsync(user);
+            var removeResult = await _userManager.RemoveFromRolesAsync(user, currentRoles);
+            if (!removeResult.Succeeded)
+                ModelState.AddModelError("", "Roller silinirken hata oluştu.");
+
+            var addResult = await _userManager.AddToRolesAsync(user, vm.SelectedRoles);
+            if (!addResult.Succeeded)
+                ModelState.AddModelError("", "Roller eklenirken hata oluştu.");
+
+            if (!ModelState.IsValid)
+                return View(vm);
+
+            return RedirectToAction(nameof(UserList));
+        }
+    }
+}
+
+
+// UserRolesViewModel.cs
+namespace WebApplication3.Areas.Admin.Models
+{
+    public class UserRolesViewModel
+    {
+        public string UserId { get; set; }
+        public string UserName { get; set; }
+        public IList<string> Roles { get; set; }
+    }
+}
+
+// EditRolesViewModel.cs
+namespace WebApplication3.Areas.Admin.Models
+{
+    public class EditRolesViewModel
+    {
+        public string UserId { get; set; }
+        public string UserName { get; set; }
+
+        // Sistemdeki tüm roller
+        public List<string> AvailableRoles { get; set; }
+
+        // Kullanıcının o anki rolleri
+        public IList<string> SelectedRoles { get; set; }
     }
 }

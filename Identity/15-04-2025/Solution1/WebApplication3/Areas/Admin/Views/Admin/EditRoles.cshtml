@@ -1,0 +1,39 @@
+﻿@model WebApplication3.Areas.Admin.Models.EditRolesViewModel
+
+@{
+    ViewData["Title"] = $"{Model.UserName} Rollerini Düzenle";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-area="Admin" asp-controller="Admin" asp-action="EditRoles" method="post">
+    <input type="hidden" asp-for="UserId" />
+
+    <div class="mb-3">
+        <label class="form-label">Roller</label>
+        <select asp-for="SelectedRoles"
+                class="form-select"
+                multiple="multiple">
+            @foreach (var role in Model.AvailableRoles)
+            {
+                <option value="@role" selected="@(Model.SelectedRoles.Contains(role))">
+                    @role
+                </option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        <i class="fas fa-save me-1"></i> Kaydet
+    </button>
+    <a asp-area="Admin"
+       asp-controller="Admin"
+       asp-action="UserList"
+       class="btn btn-secondary ms-2">
+        Geri
+    </a>
+</form>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+}

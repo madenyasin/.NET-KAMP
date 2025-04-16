@@ -1,0 +1,67 @@
+﻿@model WebApplication2.Areas.Identity.ViewModels.Login_VM
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Kullanıcı Girişi</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Login" method="post">
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
+                            <input asp-for="UserName" class="form-control"
+                                   placeholder="Kullanıcı adınızı girin">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Şifre</label>
+                            <input asp-for="Password" type="password" class="form-control"
+                                   placeholder="Şifrenizi girin">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <!-- Remember Me & Forgot Password -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Beni Hatırla</label>
+                            <a href="#" class="float-end text-decoration-none">Şifremi Unuttum?</a>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-box-arrow-in-right"></i> Giriş Yap
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Registration Link -->
+                <div class="card-footer text-center">
+                    Hesabınız yok mu?
+                    <a href="#" class="text-decoration-none">Kayıt Ol</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

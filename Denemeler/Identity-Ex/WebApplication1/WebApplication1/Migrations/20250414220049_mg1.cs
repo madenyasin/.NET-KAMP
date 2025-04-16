@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
-namespace WebApplication3.Migrations
+namespace WebApplication1.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class mg1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,8 +15,7 @@ namespace WebApplication3.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -32,10 +29,9 @@ namespace WebApplication3.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Ad = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Soyad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -57,26 +53,12 @@ namespace WebApplication3.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Kategoriler",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Ad = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Aciklama = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Kategoriler", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -97,7 +79,7 @@ namespace WebApplication3.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -119,7 +101,7 @@ namespace WebApplication3.Migrations
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -136,8 +118,8 @@ namespace WebApplication3.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -160,7 +142,7 @@ namespace WebApplication3.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -174,76 +156,6 @@ namespace WebApplication3.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Haberler",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Baslik = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Detay = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ResimYolu = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EklendigiTarih = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UyeId = table.Column<int>(type: "int", nullable: false),
-                    KategoriId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Haberler", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Haberler_AspNetUsers_UyeId",
-                        column: x => x.UyeId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Haberler_Kategoriler_KategoriId",
-                        column: x => x.KategoriId,
-                        principalTable: "Kategoriler",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-                    { 1, "cbd7f722-e18d-4953-bdb2-29ec995ee397", "Admin", "ADMIN" },
-                    { 2, "07c614a6-d2dc-4c57-9d28-ce472d3bd99b", "Editor", "EDITOR" },
-                    { 3, "d6633040-716b-4963-826b-0cb766b2c8d0", "Uye", "UYE" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "Ad", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Soyad", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "Root", "e17bbe42-eaec-4b2c-bc1c-b2d1e4fd92d4", "root@user.com", false, false, null, "ROOT@USER.COM", "ROOT", "AQAAAAIAAYagAAAAEK3BHuQdMCuZnQcJQK2eHsPJGcihoATprRyM++tXIUH5Aorj/3KDYKP6fqffAOmtvg==", null, false, "50def076-4226-4a95-ad75-1705f8d0bc61", "Root", false, "root" });
-
-            migrationBuilder.InsertData(
-                table: "Kategoriler",
-                columns: new[] { "Id", "Aciklama", "Ad" },
-                values: new object[,]
-                {
-                    { 1, "Güncel haberler", "Gündem" },
-                    { 2, "Spor haberleri", "Spor" },
-                    { 3, "Teknolojiye dair gelişmeler", "Teknoloji" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { 1, 1 });
-
-            migrationBuilder.InsertData(
-                table: "Haberler",
-                columns: new[] { "Id", "Baslik", "Detay", "EklendigiTarih", "KategoriId", "ResimYolu", "UyeId" },
-                values: new object[,]
-                {
-                    { 1, "Yeni Seçimler Açıklandı", "YSK, 2025 genel seçim tarihini duyurdu.", new DateTime(2025, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "secim.jpg", 1 },
-                    { 2, "Şampiyon Belli Oldu!", "Süper Lig şampiyonu 2025 sezonu tamamlandı.", new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "spor.jpg", 1 },
-                    { 3, "Yeni Telefon Tanıtıldı", "X markası yeni amiral gemisi modelini duyurdu.", new DateTime(2025, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "teknoloji.jpg", 1 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -284,16 +196,6 @@ namespace WebApplication3.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Haberler_KategoriId",
-                table: "Haberler",
-                column: "KategoriId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Haberler_UyeId",
-                table: "Haberler",
-                column: "UyeId");
         }
 
         /// <inheritdoc />
@@ -315,16 +217,10 @@ namespace WebApplication3.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Haberler");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Kategoriler");
         }
     }
 }

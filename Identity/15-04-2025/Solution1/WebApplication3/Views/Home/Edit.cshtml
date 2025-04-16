@@ -1,17 +1,22 @@
-﻿@model WebApplication3.Areas.Admin.Models.ViewModels.HaberEkleForm_VM
+﻿@model WebApplication3.ViewModels.HaberGuncelleForm_VM
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create</h1>
+<h1>Edit</h1>
 
-<h4>HaberEkle_VM</h4>
+<h4>HaberGuncelle_VM</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Haber.Id" class="control-label"></label>
+                <input asp-for="Haber.Id" class="form-control" />
+                <span asp-validation-for="Haber.Id" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Haber.Baslik" class="control-label"></label>
                 <input asp-for="Haber.Baslik" class="form-control" />
@@ -28,18 +33,19 @@
                 <span asp-validation-for="Haber.ResimYolu" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Haber.KategoriId" asp-items="@Model.Kategoriler" class="control-label"></label>
-                <select asp-for="Haber.KategoriId" asp-items="@Model.Kategoriler" class="form-select" aria-label="Default select example">
-                    <option selected>Kategori Seçiniz</option>
-                </select>
+                <label asp-for="Haber.KategoriId" class="control-label"></label>
+				<select asp-for="Haber.KategoriId" asp-items="@Model.Kategoriler" class="form-control">
+					<option selected disabled>Kategori Seçiniz</option>
+				</select>
                 <span asp-validation-for="Haber.KategoriId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+<div asp-validation-summary="All" class="text-danger"></div>
 
 <div>
     <a asp-action="Index">Back to List</a>

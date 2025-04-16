@@ -1,68 +1,93 @@
 ﻿@model IEnumerable<WebApplication3.ViewModels.HaberListele_VM>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Haber Listesi";
 }
+<div class="container my-5">
+	<!-- Başlık ve Butonlar -->
+	<div class="d-flex justify-content-between align-items-center mb-4">
+		<h1 class="h3 text-primary">@ViewData["Title"]</h1>
+		<div>
+			@if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+			{
+				<a asp-action="Create" class="btn btn-success me-2">
+					<i class="fas fa-plus me-1"></i> Yeni Haber
+				</a>
 
-<h1>Index</h1>
+			}@if (User.IsInRole("Admin"))
+			{
+				<a asp-area="Admin" asp-controller="Admin" asp-action="UserList" class="btn btn-secondary">
+					<i class="fas fa-user-shield me-1"></i> Admin Panel
+				</a>
+			}
+			
+		</div>
+	</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p><p>
-    <a asp-area="Admin" asp-controller="Admin" asp-action="Create">Admin</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Baslik)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ResimYolu)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EklendigiTarih)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UyeId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KategoriId)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Baslik)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ResimYolu)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EklendigiTarih)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UyeId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.KategoriId)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+	<!-- Haber Tablosu -->
+	<div class="table-responsive">
+		<table class="table table-striped table-hover align-middle">
+			<thead class="table-dark">
+				<tr>
+					@if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+					{
+						<th scope="col">@Html.DisplayNameFor(m => m.Id)</th>
+					}
+					<th scope="col">@Html.DisplayNameFor(m => m.Baslik)</th>
+					<th scope="col">Resim</th>
+					<th scope="col">@Html.DisplayNameFor(m => m.EklendigiTarih)</th>
+					<th scope="col">@Html.DisplayNameFor(m => m.EkleyenUyeAdi)</th>
+					<th scope="col">@Html.DisplayNameFor(m => m.KategoriAdi)</th>
+					<th scope="col" class="text-center">İşlemler</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						@if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+						{
+							<td>@item.Id</td>
+						}
+						<td>@item.Baslik</td>
+						<td>
+							@if (!string.IsNullOrEmpty(item.ResimYolu))
+							{
+								<img src="~/Images/@item.ResimYolu" alt="@item.Baslik" class="img-thumbnail" style="max-width: 120px;" />
+							}
+							else
+							{
+								<span class="text-muted">Resim yok</span>
+							}
+						</td>
+						<td>@item.EklendigiTarih.ToString("dd.MM.yyyy HH:mm")</td>
+						<td>@item.EkleyenUyeAdi</td>
+						<td>@item.KategoriAdi</td>
+						<td class="text-center">
+							@if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+							{
+								<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary me-1">
+									<i class="fas fa-edit me-1"></i> Düzenle
+								</a>
+								<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white me-1">
+									<i class="fas fa-info-circle me-1"></i> Detay
+								</a>
+								<form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+									@Html.AntiForgeryToken()
+									<button type="submit" class="btn btn-sm btn-danger me-1" onclick="return confirm('Bu kaydı silmek istediğinize emin misiniz?');">
+										<i class="fas fa-trash-alt me-1"></i> Sil
+									</button>
+								</form>
+							}
+							else
+							{
+								<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white">
+									<i class="fas fa-info-circle me-1"></i> Detay
+								</a>
+							}
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>

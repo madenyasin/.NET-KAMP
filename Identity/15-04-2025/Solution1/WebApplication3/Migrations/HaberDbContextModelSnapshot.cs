@@ -276,21 +276,21 @@ namespace WebApplication3.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "cbd7f722-e18d-4953-bdb2-29ec995ee397",
+                            ConcurrencyStamp = "f54ddbf4-afb7-4d04-9387-b2020b639361",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "07c614a6-d2dc-4c57-9d28-ce472d3bd99b",
+                            ConcurrencyStamp = "9b5c1ca6-5eb6-4596-a114-c4b434aa611d",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "d6633040-716b-4963-826b-0cb766b2c8d0",
+                            ConcurrencyStamp = "b26914e7-cd13-4373-91a3-564cb2aa0bda",
                             Name = "Uye",
                             NormalizedName = "UYE"
                         });
@@ -377,15 +377,15 @@ namespace WebApplication3.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             Ad = "Root",
-                            ConcurrencyStamp = "e17bbe42-eaec-4b2c-bc1c-b2d1e4fd92d4",
+                            ConcurrencyStamp = "9df295af-30cb-432a-801b-89cd1e51fe61",
                             Email = "root@user.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ROOT@USER.COM",
                             NormalizedUserName = "ROOT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK3BHuQdMCuZnQcJQK2eHsPJGcihoATprRyM++tXIUH5Aorj/3KDYKP6fqffAOmtvg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBipGyGooAZLOtiwEbWM4wzdZFUSS3WiHZUON6Y2n8rFz1jhl2P/ftvana05fVuTbw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "50def076-4226-4a95-ad75-1705f8d0bc61",
+                            SecurityStamp = "c2625402-482a-46b7-a8ba-563ccd719831",
                             Soyad = "Root",
                             TwoFactorEnabled = false,
                             UserName = "root"

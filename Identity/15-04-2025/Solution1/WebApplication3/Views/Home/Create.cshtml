@@ -1,50 +1,61 @@
 ﻿@model WebApplication3.Areas.Admin.Models.ViewModels.HaberEkleForm_VM
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Haber Ekle";
 }
 
-<h1>Create</h1>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h2 class="mb-0">Yeni Haber Ekle</h2>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-<h4>HaberEkle_VM</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Haber.Baslik" class="control-label"></label>
-                <input asp-for="Haber.Baslik" class="form-control" />
-                <span asp-validation-for="Haber.Baslik" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Haber.Detay" class="control-label"></label>
-                <input asp-for="Haber.Detay" class="form-control" />
-                <span asp-validation-for="Haber.Detay" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Haber.ResimYolu" class="control-label"></label>
-                <input asp-for="Haber.ResimYolu" class="form-control" />
-                <span asp-validation-for="Haber.ResimYolu" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Haber.KategoriId" asp-items="@Model.Kategoriler" class="control-label"></label>
-                <select asp-for="Haber.KategoriId" asp-items="@Model.Kategoriler" class="form-select" aria-label="Default select example">
-                    <option selected>Kategori Seçiniz</option>
-                </select>
-                <span asp-validation-for="Haber.KategoriId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="mb-3">
+                    <label asp-for="Haber.Baslik" class="form-label"></label>
+                    <input asp-for="Haber.Baslik" class="form-control" />
+                    <span asp-validation-for="Haber.Baslik" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Haber.Detay" class="form-label"></label>
+                    <textarea asp-for="Haber.Detay" class="form-control" rows="5"></textarea>
+                    <span asp-validation-for="Haber.Detay" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Haber.ResimYolu" class="form-label"></label>
+                    <input asp-for="Haber.ResimYolu" class="form-control" />
+                    <span asp-validation-for="Haber.ResimYolu" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Haber.KategoriId" class="form-label"></label>
+                    <select asp-for="Haber.KategoriId" asp-items="@Model.Kategoriler" class="form-select">
+                        <option value="">Kategori Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="Haber.KategoriId" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-plus-circle me-1"></i> Haberi Oluştur
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Listeye Dön
+        </a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 }

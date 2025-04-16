@@ -1,0 +1,43 @@
+﻿@model WebApplication3.ViewModels.HaberDetay_VM
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        @if (!string.IsNullOrEmpty(Model.ResimYolu))
+        {
+            @* <img src="~/Images/@Model.ResimYolu" class="card-img-top" alt="Haber Görseli"> *@
+            <img src="~/Images/@Model.ResimYolu" class="card-img-top img-fluid" alt="Haber Görseli" style="max-height: 300px; object-fit: cover;">
+        }
+
+        <div class="card-body">
+            <h1 class="card-title">@Model.Baslik</h1>
+            <p class="card-text mt-3">@Model.Detay</p>
+        </div>
+
+        <div class="card-footer text-muted d-flex justify-content-between flex-wrap">
+            <div>
+                <i class="fas fa-user"></i> <strong>Yazar:</strong> @Model.EkleyenUyeAdi
+            </div>
+            <div>
+                <i class="fas fa-calendar-alt"></i> <strong>Tarih:</strong> @Model.EklendigiTarih.ToString("dd.MM.yyyy HH:mm")
+            </div>
+            <div>
+                <i class="fas fa-tag"></i> <strong>Kategori:</strong> @Model.KategoriAdi
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 d-flex gap-2">
+        @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                <i class="fas fa-edit me-1"></i> Düzenle
+            </a>
+        }
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Listeye Dön
+        </a>
+    </div>
+</div>
