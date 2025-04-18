@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApplication3.Data;
 using WebApplication3.Managers;
@@ -19,7 +20,7 @@ builder.Services.AddIdentity<Uye, Rol>(x =>
     x.SignIn.RequireConfirmedAccount = false;
 
 }).AddEntityFrameworkStores<HaberDbContext>()
-.AddRoles<Rol>();
+.AddRoles<Rol>().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<HaberManager>();
 
@@ -42,13 +43,7 @@ app.UseAuthorization();
 
 
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-    );
-});
+
 
 
 app.MapControllerRoute(

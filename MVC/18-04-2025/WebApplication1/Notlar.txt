@@ -1,0 +1,3 @@
+﻿identity üyelik sistemi kullanılarak;
+todo list: id, ad, açıklama, bitiş tarihi, durum
+Kategoriler: id, ad

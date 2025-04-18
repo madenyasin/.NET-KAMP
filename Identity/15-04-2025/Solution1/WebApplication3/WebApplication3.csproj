@@ -22,6 +22,8 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\ViewModels\" />
+    <Folder Include="Areas\Admin\Views\Admin\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
 
 </Project>

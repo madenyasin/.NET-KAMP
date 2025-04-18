@@ -6,6 +6,7 @@ using WebApplication3.Areas.Admin.Models.ViewModels;
 using WebApplication3.Data;
 using WebApplication3.Managers;
 using WebApplication3.Models;
+using WebApplication3.Utilities;
 using WebApplication3.ViewModels;
 
 namespace WebApplication3.Controllers
@@ -53,38 +54,56 @@ namespace WebApplication3.Controllers
             return View(model);
 
         }
-
         [Authorize(Roles = "Admin,Editor")]
         [HttpPost]
         public IActionResult Create(HaberEkle_VM haber)
         {
             if (ModelState.IsValid)
             {
-                var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
-                var yeniHaber = new Haber
+                // Check if file was uploaded
+                if (haber.KapakResmiDosyasi == null || haber.KapakResmiDosyasi.Length == 0)
                 {
-                    Baslik = haber.Baslik,
-                    Detay = haber.Detay,
-                    ResimYolu = haber.ResimYolu,
-                    KategoriId = haber.KategoriId,
-                    UyeId = user.Id,
-                    EklendigiTarih = DateTime.Now,
-
-                };
-                var sonuc = _haberManager.HaberEkleAsync(yeniHaber).Result;
-                if (sonuc)
-                {
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("Haber.KapakResmiDosyasi", "Kapak resmi gereklidir.");
                 }
                 else
                 {
-                    ModelState.AddModelError("HATA", "Haber eklenirken bir hata oluştu.");
+                    var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+                    var resimYolu = FileOperations.ResimYukle(haber.KapakResmiDosyasi);
+
+                    if (string.IsNullOrEmpty(resimYolu))
+                    {
+                        ModelState.AddModelError("Haber.KapakResmiDosyasi", "Resim yüklenirken bir hata oluştu.");
+                    }
+                    else
+                    {
+                        var yeniHaber = new Haber
+                        {
+                            Baslik = haber.Baslik,
+                            Detay = haber.Detay,
+                            ResimYolu = FileOperations.ResimYukle(haber.KapakResmiDosyasi),
+                            KategoriId = haber.KategoriId,
+                            UyeId = user.Id,
+                            EklendigiTarih = DateTime.Now,
+                        };
+
+                        var sonuc = _haberManager.HaberEkleAsync(yeniHaber).Result;
+                        if (sonuc)
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Haber eklenirken bir hata oluştu.");
+                        }
+                    }
                 }
             }
+
+            // If we got this far, something failed; redisplay form
             var model = new HaberEkleForm_VM
             {
                 Kategoriler = new SelectList(_dbContext.Kategoriler.ToList(), "Id", "Ad"),
-                Haber = new HaberEkle_VM()
+                Haber = haber
             };
             return View(model);
         }

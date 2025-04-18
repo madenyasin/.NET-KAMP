@@ -1,0 +1,79 @@
+﻿@model WebApplication1.ViewModels.KitapEkleFormViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>KitapEkleViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Kitap.Ad" class="control-label"></label>
+                <input asp-for="Kitap.Ad" class="form-control" />
+                <span asp-validation-for="Kitap.Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.Fiyat" class="control-label"></label>
+                <input asp-for="Kitap.Fiyat" class="form-control" />
+                <span asp-validation-for="Kitap.Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.KapakResmi" class="control-label"></label>
+                <input asp-for="Kitap.KapakResmi" class="form-control" />
+                <span asp-validation-for="Kitap.KapakResmi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.Ozet" class="control-label"></label>
+                <input asp-for="Kitap.Ozet" class="form-control" />
+                <span asp-validation-for="Kitap.Ozet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.SayfaSayisi" class="control-label"></label>
+                <input asp-for="Kitap.SayfaSayisi" class="form-control" />
+                <span asp-validation-for="Kitap.SayfaSayisi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.YayinEviId" class="control-label"></label>
+                <select asp-for="Kitap.YayinEviId" asp-items=@Model.Yayinevleri class="form-control">
+                    <option selected disabled>Yayınevi Seçiniz</option>
+                </select>
+                <span asp-validation-for="Kitap.YayinEviId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.KategoriId" class="control-label"></label>
+                <select asp-for="Kitap.KategoriId" asp-items=@Model.Kategoriler class="form-control">
+                    <option selected disabled>Kategori Seçiniz</option>
+                </select>
+                <span asp-validation-for="Kitap.KategoriId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.YazarId" class="control-label"></label>
+
+                <select asp-for="Kitap.YazarId" asp-items=@Model.Yazarlar class="form-control">
+                    <option selected disabled>Yazar Seçiniz</option>
+                </select>
+
+                <span asp-validation-for="Kitap.YazarId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication1.Models.Not>
+
+@{
+    ViewData["Title"] = "Notlarım";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Ad</h5>
+                        <p class="card-text">@item.Aciklama</p>
+                        <p class="text-muted">Bitiş Tarihi: @item.BitisTarihi.ToString("dd MMM yyyy")</p>
+                        <p class="text-muted">
+                            Durum: @(item.Durum ? "<span class='text-success'>Tamamlandı</span>" : "<span class='text-warning'>Tamamlanmadı</span>")
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <a href="@Url.Action("Edit", "Not", new { id = item.Id })" class="btn btn-primary btn-sm">Düzenle</a>
+                            <a href="@Url.Action("Delete", "Not", new { id = item.Id })" class="btn btn-danger btn-sm">Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Not Ekle Butonu -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="text-center mt-4">
+            <a href="@Url.Action("Create", "Not")" class="btn btn-success">Yeni Not Ekle</a>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center mt-4">
+            Giriş yapmadınız. Not eklemek için lütfen giriş yapın.
+        </div>
+    }
+</div>

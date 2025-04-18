@@ -1,0 +1,51 @@
+﻿@model WebApplication1.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">@ViewData["Title"]</h2>
+                    <form asp-action="Register">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <div class="mb-3">
+                            <label asp-for="Ad" class="form-label"></label>
+                            <input asp-for="Ad" class="form-control" />
+                            <span asp-validation-for="Ad" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Soyad" class="form-label"></label>
+                            <input asp-for="Soyad" class="form-control" />
+                            <span asp-validation-for="Soyad" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="EPosta" class="form-label"></label>
+                            <input asp-for="EPosta" type="email" class="form-control" />
+                            <span asp-validation-for="EPosta" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="KullaniciAdi" class="form-label"></label>
+                            <input asp-for="KullaniciAdi" class="form-control" />
+                            <span asp-validation-for="KullaniciAdi" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Sifre" class="form-label"></label>
+                            <input asp-for="Sifre" type="password" class="form-control" />
+                            <span asp-validation-for="Sifre" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="SifreTekrari" class="form-label"></label>
+                            <input asp-for="SifreTekrari" type="password" class="form-control" />
+                            <span asp-validation-for="SifreTekrari" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Kayıt Ol</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

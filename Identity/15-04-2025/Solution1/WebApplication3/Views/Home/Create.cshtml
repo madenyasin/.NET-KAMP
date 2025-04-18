@@ -4,35 +4,38 @@
     ViewData["Title"] = "Haber Ekle";
 }
 
+
 <div class="container mt-4">
     <div class="card shadow-sm">
         <div class="card-header">
             <h2 class="mb-0">Yeni Haber Ekle</h2>
         </div>
         <div class="card-body">
-            <form asp-action="Create">
+            <!-- Enctype for file upload -->
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                 <div class="mb-3">
-                    <label asp-for="Haber.Baslik" class="form-label"></label>
+                    <label asp-for="Haber.Baslik" class="form-label">Başlık</label>
                     <input asp-for="Haber.Baslik" class="form-control" />
                     <span asp-validation-for="Haber.Baslik" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Haber.Detay" class="form-label"></label>
+                    <label asp-for="Haber.Detay" class="form-label">Detay</label>
                     <textarea asp-for="Haber.Detay" class="form-control" rows="5"></textarea>
                     <span asp-validation-for="Haber.Detay" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Haber.ResimYolu" class="form-label"></label>
-                    <input asp-for="Haber.ResimYolu" class="form-control" />
-                    <span asp-validation-for="Haber.ResimYolu" class="text-danger"></span>
+                    <label asp-for="Haber.KapakResmiDosyasi" class="form-label">Kapak Resmi</label>
+                    <input asp-for="Haber.KapakResmiDosyasi" type="file" class="form-control" />
+                    <span asp-validation-for="Haber.KapakResmiDosyasi" class="text-danger"></span>
                 </div>
 
+
                 <div class="mb-3">
-                    <label asp-for="Haber.KategoriId" class="form-label"></label>
+                    <label asp-for="Haber.KategoriId" class="form-label">Kategori</label>
                     <select asp-for="Haber.KategoriId" asp-items="@Model.Kategoriler" class="form-select">
                         <option value="">Kategori Seçiniz</option>
                     </select>
@@ -45,6 +48,7 @@
             </form>
         </div>
     </div>
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
 
     <div class="mt-3">
         <a asp-action="Index" class="btn btn-secondary">

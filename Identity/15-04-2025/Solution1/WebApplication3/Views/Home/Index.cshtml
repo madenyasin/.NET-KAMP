@@ -4,7 +4,6 @@
 	ViewData["Title"] = "Haber Listesi";
 }
 <div class="container my-5">
-	<!-- Başlık ve Butonlar -->
 	<div class="d-flex justify-content-between align-items-center mb-4">
 		<h1 class="h3 text-primary">@ViewData["Title"]</h1>
 		<div>
@@ -16,7 +15,7 @@
 
 			}@if (User.IsInRole("Admin"))
 			{
-				<a asp-area="Admin" asp-controller="Admin" asp-action="UserList" class="btn btn-secondary">
+				<a asp-area="Admin" asp-controller="Admin" asp-action="Index" class="btn btn-secondary">
 					<i class="fas fa-user-shield me-1"></i> Admin Panel
 				</a>
 			}
@@ -24,7 +23,6 @@
 		</div>
 	</div>
 
-	<!-- Haber Tablosu -->
 	<div class="table-responsive">
 		<table class="table table-striped table-hover align-middle">
 			<thead class="table-dark">
