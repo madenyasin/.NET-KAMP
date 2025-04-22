@@ -1,0 +1,105 @@
+﻿@* @model ManyToMany.ViewModels.KitapEkleForm_VM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>KitapEkle_VM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Kitap.Ad" class="control-label"></label>
+                <input asp-for="Kitap.Ad" class="form-control" />
+                <span asp-validation-for="Kitap.Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.Ozet" class="control-label"></label>
+                <input asp-for="Kitap.Ozet" class="form-control" />
+                <span asp-validation-for="Kitap.Ozet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.ISBN" class="control-label"></label>
+                <input asp-for="Kitap.ISBN" class="form-control" />
+                <span asp-validation-for="Kitap.ISBN" class="text-danger"></span>
+            </div><div class="form-group">
+                <label asp-for="@Model." class="control-label"></label>
+                <input asp-for="Kitap.ISBN" class="form-control" />
+                <span asp-validation-for="Kitap.ISBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+ *@
+
+
+@model ManyToMany.ViewModels.KitapEkleForm_VM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Yeni Kitap Ekle</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Kitap.Ad" class="control-label"></label>
+                <input asp-for="Kitap.Ad" class="form-control" />
+                <span asp-validation-for="Kitap.Ad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Kitap.Ozet" class="control-label"></label>
+                <input asp-for="Kitap.Ozet" class="form-control" />
+                <span asp-validation-for="Kitap.Ozet" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Kitap.ISBN" class="control-label"></label>
+                <input asp-for="Kitap.ISBN" class="form-control" />
+                <span asp-validation-for="Kitap.ISBN" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Yazar(lar)</label>
+                <select asp-for="Kitap.SecilenYazarIdleri" asp-items="Model.Yazarlar" class="form-control" multiple></select>
+                <span asp-validation-for="Kitap.SecilenYazarIdleri" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

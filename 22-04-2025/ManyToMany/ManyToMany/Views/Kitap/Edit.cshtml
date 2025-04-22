@@ -1,0 +1,51 @@
+﻿@model ManyToMany.ViewModels.KitapGuncelleForm_VM
+
+@{
+    ViewData["Title"] = "Kitap Güncelle";
+}
+
+<h1>Kitap Güncelle</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Kitap ID (Hidden) -->
+            <input type="hidden" asp-for="Kitap.KitapId" />
+
+            <div class="form-group">
+                <label asp-for="Kitap.Ad" class="control-label"></label>
+                <input asp-for="Kitap.Ad" class="form-control" />
+                <span asp-validation-for="Kitap.Ad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Kitap.Ozet" class="control-label"></label>
+                <input asp-for="Kitap.Ozet" class="form-control" />
+                <span asp-validation-for="Kitap.Ozet" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Yazar(lar)</label>
+                <select asp-for="Kitap.SecilenYazarIdleri" asp-items="Model.Yazarlar" class="form-control" multiple size="8"></select>
+                <span asp-validation-for="Kitap.SecilenYazarIdleri" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
