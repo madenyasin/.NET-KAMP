@@ -1,0 +1,7 @@
+﻿@using relation.ViewModels.InstructorViewModels
+@model InstructorCreateVM
+
+<form asp-action="Create" asp-controller="Instructor" method="post">
+	<input type="text" asp-for="Name" placeholder="Name"/> <br />
+	<button>Gönder</button>
+</form>

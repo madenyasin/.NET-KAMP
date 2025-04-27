@@ -1,0 +1,46 @@
+﻿@model WebApplication1.Models.ViewModels.Kitap.KitapGuncelleViewModel
+
+<h2>Kitap Düzenle</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label>Ad</label>
+        <input asp-for="Ad" class="form-control" />
+        <span asp-validation-for="Ad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Fiyat</label>
+        <input asp-for="Fiyat" class="form-control" />
+        <span asp-validation-for="Fiyat" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Sayfa Sayısı</label>
+        <input asp-for="SayfaSayisi" class="form-control" />
+        <span asp-validation-for="SayfaSayisi" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Özet</label>
+        <textarea asp-for="Ozet" class="form-control"></textarea>
+        <span asp-validation-for="Ozet" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Kategoriler</label><br />
+        @foreach (var kategori in Model.TumKategoriler)
+        {
+            <input type="checkbox" name="SeciliKategoriIdleri"
+                   value="@kategori.Id"
+            @(Model.SeciliKategoriIdleri.Contains(kategori.Id) ? "checked" : "") />
+            <label>@kategori.Ad</label>
+
+            <br />
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>

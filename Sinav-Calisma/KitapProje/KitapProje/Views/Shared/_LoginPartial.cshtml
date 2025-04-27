@@ -1,0 +1,24 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <div class="d-flex align-items-center gap-2 me-3">
+        <span class="text-dark">
+            <i class="fas fa-user me-1"></i> <strong>@User.Identity.Name</strong>
+        </span>
+        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="m-0">
+            <button type="submit" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-sign-out-alt me-1"></i> Çıkış Yap
+            </button>
+        </form>
+    </div>
+}
+else
+{
+    <div class="d-flex gap-2 me-3">
+        <a asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-sm btn-outline-primary">
+            <i class="fas fa-sign-in-alt me-1"></i> Giriş
+        </a>
+        <a asp-area="" asp-controller="Account" asp-action="Register" class="btn btn-sm btn-outline-success">
+            <i class="fas fa-user-plus me-1"></i> Kayıt
+        </a>
+    </div>
+}

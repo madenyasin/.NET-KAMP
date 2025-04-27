@@ -83,10 +83,15 @@
 
             <div class="form-group">
                 <label>Yazar(lar)</label>
+                <select asp-for="Kitap.SecilenYazarIdleri" asp-items="Model.Kitap.DenemeYazarlar" class="form-control" multiple></select>
+                <span asp-validation-for="Kitap.SecilenYazarIdleri" class="text-danger"></span>
+            </div>
+            @*    <div class="form-group">
+                <label>Yazar(lar)</label>
                 <select asp-for="Kitap.SecilenYazarIdleri" asp-items="Model.Yazarlar" class="form-control" multiple></select>
                 <span asp-validation-for="Kitap.SecilenYazarIdleri" class="text-danger"></span>
             </div>
-
+ *@
             <div class="form-group mt-3">
                 <input type="submit" value="Kaydet" class="btn btn-primary" />
             </div>

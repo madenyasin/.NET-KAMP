@@ -34,7 +34,14 @@ namespace ManyToMany.Controllers
         {
             KitapEkleForm_VM vm = new KitapEkleForm_VM
             {
-                Kitap = new KitapEkle_VM(),
+                Kitap = new KitapEkle_VM()
+                {
+                    DenemeYazarlar = _dbContext.Yazarlar.Select(y => new SelectListItem
+                    {
+                        Value = y.Id.ToString(),
+                        Text = y.Ad
+                    }).ToList()
+                },
                 Yazarlar = new SelectList(_dbContext.Yazarlar, "Id", "Ad"),
             };
             return View(vm);
@@ -83,7 +90,7 @@ namespace ManyToMany.Controllers
                 }).FirstOrDefault(),
                 Yazarlar = new SelectList(_dbContext.Yazarlar, "Id", "Ad"),
             };
-         
+
             return View(vm);
         }
 
