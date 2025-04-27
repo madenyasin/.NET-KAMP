@@ -53,6 +53,11 @@ namespace KitapProje.Controllers
 
         public IActionResult Login()
         {
+            // Kullanıcı zaten giriş yapmışsa, Home sayfasına yönlendir
+            if (_signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -64,6 +69,9 @@ namespace KitapProje.Controllers
             {
                 return View(model);
             }
+
+            
+
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {

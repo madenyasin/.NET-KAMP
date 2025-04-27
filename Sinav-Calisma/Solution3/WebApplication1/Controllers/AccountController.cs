@@ -66,6 +66,13 @@ namespace WebApplication1.Controllers
             {
                 return View(model);
             }
+
+            // Kullanıcı zaten giriş yapmışsa, ana sayfaya yönlendir
+            if (_signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("Index", "Kitap");
+            }
+
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 
             if (result.Succeeded)

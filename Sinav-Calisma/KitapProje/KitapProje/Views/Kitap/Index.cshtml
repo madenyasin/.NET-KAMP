@@ -71,9 +71,10 @@
 					}
 				</td>
 				<td>
-					@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-					@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-					@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+					<a asp-action="Edit" asp-controller="Kitap" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+					<a asp-action="Details" asp-controller="Kitap" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+					<a onclick="return confirm('Bu kitabı silmek istediğinize emin misiniz?');" asp-action="Delete" asp-controller="Kitap" asp-route-id="@item.Id" class="btn btn-primary">Delete</a>
+
 				</td>
 			</tr>
 		}

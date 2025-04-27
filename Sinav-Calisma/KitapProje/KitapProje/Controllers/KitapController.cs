@@ -105,29 +105,44 @@ namespace KitapProje.Controllers
             };
             return View(vm);
         }
-
+        /// <summary>
+        /// kullanıcının kitapları değilse false döner.
+        /// Kullanıcı yalnızca kendi kitaplarında işlem yapabilir.
+        /// </summary>
+        /// <param name="kitapId"></param>
+        /// <returns></returns>
+        private bool KullanicininKitabiMi(int kitapId)
+        {
+            var user = _userRepository.AktifKullaniciGetir();
+            return _kitapRepository
+                .ListeleQueryable()
+                .Any(k => k.UserId == user.Id && k.Id == kitapId);
+        }
         public IActionResult Edit(int id)
         {
-            // kullanıcının kitapları
-
-            var user = _userRepository.AktifKullaniciGetir();
-            var aktifKullanicininKitaplari = _kitapRepository
-                .ListeleQueryable()
-                .Where(x => x.UserId == user.Id)
-                .Select(x => x.Id).ToList();
-
-            // kullanıcının kitapları değilse
-            if (aktifKullanicininKitaplari == null || aktifKullanicininKitaplari.Count == 0)
-            {
-                // kullanıcı yetkisi yok
-                return Forbid();
-            }
-            else if (!aktifKullanicininKitaplari.Contains(id))
+            // kullanıcının kitabı değilse işlem yapamaz
+            if (!KullanicininKitabiMi(id))
             {
                 return Forbid();
-
             }
-            //var guncellenecekKitap = _kitapRepository.Bul(id); // ilişkili veri gelmiyor
+            //var user = _userRepository.AktifKullaniciGetir();
+            //var aktifKullanicininKitaplari = _kitapRepository
+            //    .ListeleQueryable()
+            //    .Where(x => x.UserId == user.Id)
+            //    .Select(x => x.Id).ToList();
+
+            //// kullanıcının kitapları değilse
+            //if (aktifKullanicininKitaplari == null || aktifKullanicininKitaplari.Count == 0)
+            //{
+            //    // kullanıcı yetkisi yok
+            //    return Forbid();
+            //}
+            //else if (!aktifKullanicininKitaplari.Contains(id))
+            //{
+            //    return Forbid();
+
+            //}
+            ////var guncellenecekKitap = _kitapRepository.Bul(id); // ilişkili veri gelmiyor
 
             var guncellenecekKitap = _kitapRepository
                 .ListeleQueryable()
@@ -154,23 +169,28 @@ namespace KitapProje.Controllers
         [HttpPost]
         public IActionResult Edit(KitapGuncelleVM kitap)
         {
-            var user = _userRepository.AktifKullaniciGetir();
-            var aktifKullanicininKitaplari = _kitapRepository
-                .ListeleQueryable()
-                .Where(x => x.UserId == user.Id)
-                .Select(x => x.Id).ToList();
-
-            // kullanıcının kitapları değilse
-            if (aktifKullanicininKitaplari == null || aktifKullanicininKitaplari.Count == 0)
-            {
-                // kullanıcı yetkisi yok
-                return Forbid();
-            }
-            else if (!aktifKullanicininKitaplari.Contains(kitap.Id))
+            // kullanıcının kitabı değilse işlem yapamaz
+            if (!KullanicininKitabiMi(kitap.Id))
             {
                 return Forbid();
-
             }
+            //var user = _userRepository.AktifKullaniciGetir();
+            //var aktifKullanicininKitaplari = _kitapRepository
+            //    .ListeleQueryable()
+            //    .Where(x => x.UserId == user.Id)
+            //    .Select(x => x.Id).ToList();
+
+            //// kullanıcının kitapları değilse
+            //if (aktifKullanicininKitaplari == null || aktifKullanicininKitaplari.Count == 0)
+            //{
+            //    // kullanıcı yetkisi yok
+            //    return Forbid();
+            //}
+            //else if (!aktifKullanicininKitaplari.Contains(kitap.Id))
+            //{
+            //    return Forbid();
+
+            //}
 
 
             if (ModelState.IsValid)
@@ -184,8 +204,6 @@ namespace KitapProje.Controllers
                 guncellenecekKitap.SayfaSayisi = kitap.SayfaSayisi;
                 guncellenecekKitap.Fiyat = kitap.Fiyat;
                 guncellenecekKitap.Ozet = kitap.Ozet;
-
-
 
                 guncellenecekKitap.Kategoriler.Clear();
 
@@ -206,9 +224,7 @@ namespace KitapProje.Controllers
 
         public IActionResult Details(int id)
         {
-            
-
-            var kitapDetayVM= _kitapRepository
+            var kitapDetayVM = _kitapRepository
               .ListeleQueryable()
               .Include(k => k.User)
               .Include(k => k.Kategoriler)
@@ -230,5 +246,25 @@ namespace KitapProje.Controllers
         //    var detay = _kitapRepository.KitapDetayGetir(_kitapRepository.Bul(id));
         //    return View(detay);
         //}
+
+        public IActionResult Delete(int id)
+        {
+            // kullanıcı yalnızca kendi kitaplarını silebilir.
+            if (!KullanicininKitabiMi(id))
+            {
+                return Forbid();
+            }
+
+            var silinecekKitap = _kitapRepository.Bul(id);
+
+            // Veritabanında olmayan bir kitapsa NotFound() döner.
+            if (silinecekKitap == null)
+            {
+                return NotFound();
+            }
+
+            _kitapRepository.Sil(id);
+            return RedirectToAction("Index");
+        }
     }
 }
