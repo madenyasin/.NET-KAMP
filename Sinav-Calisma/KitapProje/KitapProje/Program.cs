@@ -25,6 +25,8 @@ namespace KitapProje
 
             builder.Services.AddTransient<KitapRepository>();
             builder.Services.AddTransient<KategoriRepository>();
+
+            builder.Services.AddTransient<UserRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

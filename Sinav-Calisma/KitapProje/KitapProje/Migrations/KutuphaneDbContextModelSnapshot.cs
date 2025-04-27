@@ -94,17 +94,17 @@ namespace KitapProje.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f15cf31a-8d91-491e-9fa4-42fed3c9dd8d",
+                            ConcurrencyStamp = "229231eb-f0b7-4af1-bfd2-8c67f0762832",
                             Email = "root@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ROOT@MAIL.COM",
                             NormalizedUserName = "ROOT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHUkChpQf9pSvEG0KjHMGgmDqxX615Z3a9VH4R8rTK0DKkHwrehch3Pd77AFXYld9g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKBBvopPjO+CfQ3W27PlWgEMzqMdHVJOx+K0VQCS1CE5OYaL5FU174IcPmntM+g+jw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b4435d0d-2f57-415b-834c-9a359b343c54",
+                            SecurityStamp = "ec9febc6-26f0-47ea-b67d-cd6cace41753",
                             TwoFactorEnabled = false,
-                            UserName = "rott"
+                            UserName = "root"
                         });
                 });
 

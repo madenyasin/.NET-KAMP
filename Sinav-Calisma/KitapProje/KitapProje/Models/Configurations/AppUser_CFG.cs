@@ -12,12 +12,12 @@ namespace KitapProje.Models.Configurations
             builder.HasData(new AppUser
             {
                 Id = 1,
-                UserName = "rott",
+                UserName = "root",
                 NormalizedUserName = "ROOT",
                 Email = "root@mail.com",
                 NormalizedEmail = "ROOT@MAIL.COM",
-                PasswordHash = hasher.HashPassword(null, "Root123!"),
-                SecurityStamp = Guid.NewGuid().ToString(),
+                PasswordHash = hasher.HashPassword(new AppUser { UserName = "root" }, "Root123!"),
+                SecurityStamp = Guid.NewGuid().ToString("D"),
             });
         }
     }

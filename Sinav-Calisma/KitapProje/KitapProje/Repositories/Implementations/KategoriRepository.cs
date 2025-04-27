@@ -1,6 +1,7 @@
 ﻿using KitapProje.Data;
 using KitapProje.Models;
-
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace KitapProje.Repositories.Implementations
 {

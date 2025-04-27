@@ -64,7 +64,13 @@ namespace KitapProje.Controllers
             {
                 return View(model);
             }
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError(string.Empty, "Geçersiz giriş.");
+                return View(model);
+            }
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
 
             if (result.Succeeded)
             {

@@ -1,27 +1,31 @@
-using System.Diagnostics;
-using KitapProje.Models;
-using KitapProje.Models.ViewModels.KitapViewModels;
+﻿using KitapProje.Models.ViewModels.KitapViewModels;
 using KitapProje.Repositories.Implementations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace KitapProje.Controllers
 {
-    public class HomeController : Controller
+    [Authorize]
+    public class KitapController : Controller
     {
-        private readonly UserRepository _userRepository;
         private readonly KitapRepository _kitapRepository;
+        private readonly UserRepository _userRepository;
 
-        public HomeController(UserRepository userRepository, KitapRepository kitapRepository)
+        public KitapController(KitapRepository kitapRepository, UserRepository userRepository)
         {
-            _userRepository = userRepository;
             _kitapRepository = kitapRepository;
+            _userRepository = userRepository;
         }
 
 
-        // T�m Kitaplar listelenecek
+
+        // giriş yapmış kullanıcının eklediği kitaplar
         public IActionResult Index()
         {
+            var user = _userRepository.AktifKullaniciGetir();
+            var AktifKullaniciId = user.Id;
+
             var kitaplar = _kitapRepository
                 .ListeleQueryable()
                 .Include(k => k.User)
@@ -31,20 +35,13 @@ namespace KitapProje.Controllers
                     Id = k.Id,
                     Ad = k.Ad,
                     Fiyat = k.Fiyat,
-                    Ozet = k.Ozet,
                     SayfaSayisi = k.SayfaSayisi,
+                    Ozet = k.Ozet,
                     UserName = k.User.UserName,
+                    UserId = k.User.Id,
                     Kategoriler = k.Kategoriler.Select(kat => kat.Kategori.Ad).ToList()
-                }).ToList();
-
+                }).Where(k => k.UserId == AktifKullaniciId).ToList();
             return View(kitaplar);
-        }
-
-        public IActionResult Details(int id)
-        {
-            var kitap = _kitapRepository.Bul(id);
-            var kitapDetayVM = _kitapRepository.KitapDetayGetir(kitap);
-            return View(kitapDetayVM);
         }
     }
 }

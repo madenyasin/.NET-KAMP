@@ -1,11 +1,13 @@
 ﻿
 using KitapProje.Data;
+using KitapProje.Models;
 using KitapProje.Repositories.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace KitapProje.Repositories.Implementations
 {
-    public class BaseRepository<TEntity> : ICrud<TEntity> where TEntity : class
+    public abstract class BaseRepository<TEntity> : ICrud<TEntity> where TEntity : class
     {
         protected readonly KutuphaneDbContext _dbContext;
         protected readonly DbSet<TEntity> _table;

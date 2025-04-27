@@ -223,7 +223,7 @@ namespace KitapProje.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "f15cf31a-8d91-491e-9fa4-42fed3c9dd8d", "root@mail.com", false, false, null, "ROOT@MAIL.COM", "ROOT", "AQAAAAIAAYagAAAAEHUkChpQf9pSvEG0KjHMGgmDqxX615Z3a9VH4R8rTK0DKkHwrehch3Pd77AFXYld9g==", null, false, "b4435d0d-2f57-415b-834c-9a359b343c54", false, "rott" });
+                values: new object[] { 1, 0, "229231eb-f0b7-4af1-bfd2-8c67f0762832", "root@mail.com", false, false, null, "ROOT@MAIL.COM", "ROOT", "AQAAAAIAAYagAAAAEKBBvopPjO+CfQ3W27PlWgEMzqMdHVJOx+K0VQCS1CE5OYaL5FU174IcPmntM+g+jw==", null, false, "ec9febc6-26f0-47ea-b67d-cd6cace41753", false, "root" });
 
             migrationBuilder.InsertData(
                 table: "Kategoriler",
