@@ -1,0 +1,63 @@
+﻿@model YasinMadenMVC.Models.ViewModels.MakaleViewModels.MakaleGuncelleForm_VM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MakaleGuncelle_VM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Makale.Id" class="form-control" type="hidden" />
+                <span asp-validation-for="Makale.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Makale.Baslik" class="control-label"></label>
+                <input asp-for="Makale.Baslik" class="form-control" />
+                <span asp-validation-for="Makale.Baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Makale.Icerik" class="control-label"></label>
+                <input asp-for="Makale.Icerik" class="form-control" />
+                <span asp-validation-for="Makale.Icerik" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Makale.SecilenKategoriIdleri" class="control-label"></label>
+                <br />
+                @foreach (var kategori in Model.Kategoriler)
+                {
+                    bool isChecked = Model.Makale.SecilenKategoriIdleri?.Contains(kategori.Id) ?? false;
+                    <input asp-for="@isChecked"
+                           class="form-check-input"
+                           type="checkbox"
+                           name="Makale.SecilenKategoriIdleri"
+                           value="@kategori.Id" />
+                    <label>@kategori.Ad</label>
+                    <br />
+                }
+                <span asp-validation-for="Makale.SecilenKategoriIdleri" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

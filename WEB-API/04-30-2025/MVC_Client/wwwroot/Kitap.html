@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        async function postKitapData() {
+            await fetch("http://localhost:5057/api/Kitap/Ekle", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(getKitapObject())
+            })
+        }
+
+        function getKitapObject() {
+            let id = document.getElementById("KitapID").value;
+            let ad = document.getElementById("KitapAdi").value;
+            let yazar = document.getElementById("Yazar").value;
+            let yayinevi = document.getElementById("Yayinevi").value;
+
+            return {
+                KitapID: id,
+                KitapAdi: ad,
+                Yazar: yazar,
+                Yayinevi: yayinevi
+            };  
+
+        }
+    </script>
+
+
+</head>
+
+
+
+<body>
+    <form>
+        <table>
+
+            <tr>
+                <td>Kitap ID:</td>
+                <td> <input type="text" id="KitapID" /> </td>
+            </tr>
+
+
+            <tr>
+                <td>Kitap Adi:</td>
+                <td> <input type="text" id="KitapAdi" /> </td>
+            </tr>
+
+
+            <tr>
+                <td>Yazar:</td>
+                <td> <input type="text" id="Yazar" /> </td>
+            </tr>
+            <tr>
+                <td>Yayinevi:</td>
+                <td> <input type="text" id="Yayinevi" /> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" onclick="return postKitapData()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+
+</html>

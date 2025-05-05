@@ -1,0 +1,52 @@
+﻿@model YasinMadenMVC.Models.ViewModels.MakaleViewModels.MakaleDetay_VM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MakaleDetay_VM</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Baslik)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Baslik)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Icerik)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Icerik)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YayinlanmaTarihi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YayinlanmaTarihi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Kategoriler)
+        </dt>
+        <dd class="col-sm-10">
+            <ul>
+                @foreach (var kategori in Model.Kategoriler)
+                {
+                    <li>@kategori</li>
+                }
+            </ul>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

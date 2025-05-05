@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        async function getData() {
+            let data;
+            await fetch("http://localhost:5118/api/Baslangic/liste").then(x => x.text()).then(x => data = x)
+
+            document.writeln(data);
+            tabloOlustur(data);
+        }
+
+        function tabloOlustur(data) {
+            let tablo = document.getElementById("tablo");
+            let strHtml = "";
+            for (let item of data)
+                strHtml += "<tr><td>" + item.id + "</td><td>" + item.ad + "</td><td>" + item.soyad + "</td></tr>";
+            tablo.innerHTML = strHtml;
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="getData()">Get Data</button>
+    <table id="tablo" border="1"></table>
+</body>
+</html>

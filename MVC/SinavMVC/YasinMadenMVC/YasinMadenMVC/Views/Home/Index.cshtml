@@ -1,0 +1,68 @@
+﻿@model IEnumerable<YasinMadenMVC.Models.ViewModels.MakaleViewModels.MakaleListele_VM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tüm Makaleler</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icerik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YayinlanmaTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategoriler)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Baslik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Icerik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YayinlanmaTarihi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @foreach (var kategori in item.Kategoriler)
+                    {
+                        <p>
+                            @kategori
+                        </p>
+                    }
+                </td>
+                <td>
+                    @* @Html.ActionLink("Details", "Details", new { id = item.Id }) *@
+                    <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

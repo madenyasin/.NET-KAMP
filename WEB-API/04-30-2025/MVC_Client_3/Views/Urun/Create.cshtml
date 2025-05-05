@@ -1,0 +1,45 @@
+﻿@model MVC_Client_3.Models.ViewModels.UrunEkleFormVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>UrunEkleVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Urun.UrunAdi" class="control-label"></label>
+                <input asp-for="Urun.UrunAdi" class="form-control" />
+                <span asp-validation-for="Urun.UrunAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Urun.Fiyat" class="control-label"></label>
+                <input asp-for="Urun.Fiyat" class="form-control" />
+                <span asp-validation-for="Urun.Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Urun.KategoriID" class="control-label"></label>
+                <select asp-for="Urun.KategoriID" asp-items="Model.Kategoriler" class="form-control"></select>
+                <span asp-validation-for="Urun.KategoriID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
