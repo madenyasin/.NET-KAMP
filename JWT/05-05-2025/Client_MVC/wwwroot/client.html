@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        async function loginUser(event) {
+            event.preventDefault(); // Formun submit olmasını engelle
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const response = await fetch("https://localhost:7134/api/Login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (!response.ok) {
+                document.getElementById("tokenBox").value = "Giriş başarısız!";
+                return;
+            }
+
+            // giriş başarılı 
+            const data = await response.json();
+            document.getElementById("tokenBox").value = data.token;
+
+            sessionStorage.setItem("jwtToken", "Bearer " + data.token)   
+        }
+
+        //async function getProductData() {
+        //    let data;
+        //    let token = sessionStorage.getItem("jwtToken");
+
+        //    await fetch("https://localhost:7134/api/Product", {
+        //        method: "GET",
+        //        headers: {
+        //            "Content-Type": "application/json",
+        //            "Authorization": token
+        //        }
+        //    }).then(x => x.text).then(x=>alert(x))
+        //}
+
+        async function getProductData() {
+            let token = sessionStorage.getItem("jwtToken");
+            const response = await fetch("https://localhost:7134/api/Product", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token // Doğru format!
+                }
+            });
+
+            const result = await response.text(); // veya .json() bekliyorsan response.json();
+
+            alert(result);
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="loginUser(event)">
+        <table>
+            <tr>
+                <td>Kullanıcı Adı:</td>
+                <td><input type="text" id="username" required /></td>
+            </tr>
+            <tr>
+                <td>Şifre:</td>
+                <td><input type="password" id="password" required /></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Giriş Yap"></td>
+            </tr>
+        </table>
+    </form>
+    <br />
+    <label>JWT Token:</label><br />
+    <textarea id="tokenBox" rows="5" cols="60" readonly></textarea>
+
+    <br />
+    <button onclick="getProductData()">Ürünleri Getir</button>
+
+</body>
+</html>
